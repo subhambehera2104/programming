@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>factorial</title>
+</head>
+<body>
+ <input type="number" placeholder="enter number" id="number">
+  <input type="button" value="factorial" onclick="factorial()">
+    <input type="button" value="fibonacci" onclick="fibonacci()">
+
+
+
+</body>
+<script type="text/javascript">
+	function factorial(){
+
+		var n = parseInt(document.getElementById("number").value); 	
+		var result = 1;
+		for (var i =n; i>=1; i=i-1) 
+		{
+		  result=result*i;	
+		}
+		alert("factorial "+result);
+	}
+	function fibonacci(){
+		var n = parseInt(document.getElementById("number").value); 	
+		var i = 1;
+		var j = 1;
+	   var sum = 0;
+       var result = "1,1,";	
+		while (i+sum<=n){
+			sum=i+j;
+			i=j;
+			j=sum;
+			result=result+sum+", ";
+		}
+		alert("fibonacci "+result);
+	}
+</script>
+</html>
