@@ -4,4 +4,4 @@ for i in range(0,n):
 		print(end=" ")
 	for k in range(0,i+1):
 		print("* ",end="")
-	print("\n")
+	print("\n"),m  ,m
