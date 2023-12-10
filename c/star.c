@@ -1,8 +1,6 @@
 #include <stdio.h>
-int main()
-{
-	int n=4;
-    
+
+void starPattern(int n){
 	for (int i = 0; i<n;i++)
 	{
 		for (int j=0 ; j<n ; j++)
@@ -11,5 +9,11 @@ int main()
 		}
 		printf("\n");
 	}
+
+}
+int main()
+{
+	int n=4;
+    starPattern(n);
 	return 0;
 }

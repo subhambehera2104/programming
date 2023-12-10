@@ -9,7 +9,7 @@ int main()
 		for (int i = 0; i<n; i++)
 		{
 			cout<<"*";
-		}
+		} 
 		cout<<"\n";
 	}
 	return 0;

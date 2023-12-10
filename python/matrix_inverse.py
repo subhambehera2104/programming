@@ -16,5 +16,5 @@ for j in range(matrix_cols):
 for i in range(matrix_cols):
 	for j in range(matrix_rows):
 		matrix_res[i][j]=matrix[j][i]
-		print(matrix_res[i][j], end=" ")
+		print(matrix_res[i][j], end="  ")
 	print("\n")	

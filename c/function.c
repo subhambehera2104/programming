@@ -4,6 +4,12 @@ int sum(int x,int y)
 {
 	return x+y;
 }
+
+int sub(int x,int y)
+{
+	return x-y;
+}
+
  int main()
  {
  	int x=2, y=3;
