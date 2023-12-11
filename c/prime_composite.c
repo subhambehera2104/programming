@@ -22,8 +22,8 @@ int checkprime(int num){
 
 void primeNumbers(int k)
 {
-    printf("prime numbers ");
     int isPrime = 1;
+    printf("prime numbers ");
     for(int i =2; i<k; i++)
     {
         isPrime = checkprime(i);
