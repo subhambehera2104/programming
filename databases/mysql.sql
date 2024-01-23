@@ -186,3 +186,12 @@ update orders o set order_total_amount =(select sum(product_sale_price*quantity)
 	where o.id=2;
 insert into cart_items(cart_id, product_id, quantity)
 	select 7, product_id, quantity from order_items where order_id = 2;
+
+select u.id, u.name, o.id, oi.*, o.created_at, pm.name from users u
+join carts c on u.id = c.user_id
+join orders o on o.cart_id = c.id 
+join order_items oi on oi.order_id = o.id 
+join payments p on p.order_id = o.id
+join payment_methods pm  on pm.id = p.payment_method_id;
+
+select date(created_at), sum(quantity) from order_items where product_id = 5 group by date(created_at);
