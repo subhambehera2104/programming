@@ -42,8 +42,8 @@ create table products(
 	modified_at datetime default current_timestamp
 );
 insert into products(name, description, mrp, sale_price) 
-values("Pen2", "This pen color is blue", 160.50, 10),
-	  ("Book2", "This Book is math", 1.20, 1.20);
+values("Pen3", "This pen color is blue", 180.50, 179),
+	  ("Book3", "This Book is math", 239.20, 138.20);
 select * from products;
 select name, mrp from products where mrp <=15;
 select name, mrp from products where mrp >=15;
@@ -76,7 +76,8 @@ values(1),
 
 
 insert into carts(id, user_id)
-values (2, 3);
+values (1, 3),
+(2,6);
 	 
 desc carts;
 alter table carts drop column users_id;
@@ -89,6 +90,29 @@ create table cart_items(
 	id integer auto_increment primary key,
 	cart_id integer,
 	product_id integer references products(id) on delete cascade,
+    quantity integer);
+insert into cart_items(cart_id, product_id, quantity)
+values(1, 3, 3),
+(1, 4, 1);
+
+--------------------------------
+create table orders(
+	id integer auto_increment primary key,
+	cart_id integer references carts(id) on delete cascade,
+	order_total_amount decimal (10,2),
+	discount decimal (10,2),
+	created_at datetime default current_timestamp,
+	modified_at datetime default current_timestamp);
+insert into orders(cart_id, order_total_amount, discount)
+values(7,627, 0);
+desc orders;
+update orders set cart_id=1 where id=1;
+
+--------------------------
+create table order_items(     
+	id integer auto_increment primary key,
+	order_id integer references orders(id) on delete  cascade,
+	product_id integer references products(id) on delete cascade,
 	product_name varchar(255),
 	product_description varchar(1023),
 	product_mrp decimal(10,2),
@@ -99,21 +123,66 @@ create table cart_items(
 	);
 
 
-insert into cart_items(cart_id, product_id, product_name, product_description, product_mrp, product_sale_price, quantity)
+insert into order_items(order_id, product_id, product_name, product_description, product_mrp, product_sale_price, quantity)
 values(1, 3, "Pen2", "This pen color is blue", 160.50, 150, 3),
 (1, 4, "Book2", "This Book is math", 1.20, 1.20, 1),
 (2 ,5, "pen1,","This pen is black", 5.50, 4, 1),
 (2, 6, "Book1,", "This book is scienc", 199, 199,1),
 (2, 7, "Pen2", "This pen is No:1", 10, 9, 1),
 (2, 8,"Book2", "This book is english", 299, 297, 1);
-desc cart_items;
+desc order_items;
 select u.name, u.email, ci.* from users u
 join carts c on u.id=c.user_id
-join cart_items ci on c.id= ci.cart_id
+join order_items ci on c.id= ci.cart_id
 where u.id=3;
-delete from cart_items where product_id in (7,8);
-update cart_items set quantity=5 where id=10;
+delete from order_items where product_id in (7,8);
+update order_items set quantity=5 where id=10;
 ----------------------------------------------
-create table orders(
+
+-------------------------------------------------------------
+create table payment_methods(
 	id integer auto_increment primary key,
-	cart_id integer )
+	name varchar(1023),
+	config json );
+insert into payment_methods(name, config)
+values ("cash", '{}'),
+( "Phonepe", '{"user_name": "abc", "passward": "1234556"}'),
+	  ( "paytm", '{"user_name": "abc", "passward": "1234556"}');
+-------------------------------------------------------------
+create table payments(
+	id integer auto_increment primary key,
+	order_id integer references orders(id) on delete cascade,
+	payment_method_id integer,
+	payment_amount decimal(10,2));
+insert into payments(order_id, payment_method_id, payment_amount)
+values(1, 1, 600),
+(2, 2, 798);
+desc payments;
+--------------------------------------------------------------
+select u.id, u.name, o.id, oi.*
+from users u 
+join carts c on u.id = c.user_id
+join orders o on o.cart_id = c.id
+join order_items oi on oi.order_id = o.id
+where u.name="subham";
+
+select sum(mrp) from products;
+select id, mrp from products where id = 1;
+select * from products where name like "p%";
+select * from products where name like "%2";
+select count(*) from products;
+select * from products where mrp <=10;
+select * from products where mrp >10 and mrp <100;
+select * from products where year(created_at)=2024;
+select * from products where month(created_at)=12;
+select year(created_at), count(*) from products group by year(created_at);
+select year(created_at), count(*) from products group by year(created_at) order by year(created_at) desc;
+// desc means descending order 
+select * from products order by name asc;
+// asc means ascending order
+select * from products order by name desc;
+select year(created_at), count(*) from orders group by year(created_at) order by year(created_at) desc;
+update orders o set order_total_amount =(select sum(product_sale_price*quantity) from order_items oi where oi.order_id = 2)
+	where o.id=2;
+insert into cart_items(cart_id, product_id, quantity)
+	select 7, product_id, quantity from order_items where order_id = 2;
