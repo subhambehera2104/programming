@@ -73,6 +73,11 @@ create table carts(
 insert into carts(user_id)
 values(1),
 	  (3);
+
+
+insert into carts(id, user_id)
+values (2, 3);
+	 
 desc carts;
 alter table carts drop column users_id;
 alter table carts add column user_id integer;
@@ -96,4 +101,19 @@ create table cart_items(
 
 insert into cart_items(cart_id, product_id, product_name, product_description, product_mrp, product_sale_price, quantity)
 values(1, 3, "Pen2", "This pen color is blue", 160.50, 150, 3),
-(1, 4, "Book2", "This Book is math", 1.20, 1.20, 1);
+(1, 4, "Book2", "This Book is math", 1.20, 1.20, 1),
+(2 ,5, "pen1,","This pen is black", 5.50, 4, 1),
+(2, 6, "Book1,", "This book is scienc", 199, 199,1),
+(2, 7, "Pen2", "This pen is No:1", 10, 9, 1),
+(2, 8,"Book2", "This book is english", 299, 297, 1);
+desc cart_items;
+select u.name, u.email, ci.* from users u
+join carts c on u.id=c.user_id
+join cart_items ci on c.id= ci.cart_id
+where u.id=3;
+delete from cart_items where product_id in (7,8);
+update cart_items set quantity=5 where id=10;
+----------------------------------------------
+create table orders(
+	id integer auto_increment primary key,
+	cart_id integer )
