@@ -5,12 +5,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = "subhAM123$%"
 
-# Connect to MySQL
 db = mysql.connector.connect(
-host="localhost",
-user="flask_app",
-password="12345678",
-database="flask_db"
+    host="localhost",
+    user="flask_app",
+    password="12345678",
+    database="flask_db"
 )
 cursor = db.cursor()
 
@@ -43,4 +42,26 @@ def register():
     flash("You were successfully registered")
     return redirect(url_for("home"))
 
-app.run(host='0.0.0.0', port=5001)
+@app.route('/login_page', methods=["GET"])
+def login_page():
+    return render_template("login.html")
+
+@app.route('/login', methods=["POST"])
+def login():
+    email= request.form["email"]
+    password = request.form["password"]
+
+    sql = "SELECT password FROM users WHERE email = %s"
+    cursor.execute(sql, (email,))
+    row = cursor.fetchone()
+
+    if row and check_password_hash(row[0], password): 
+        # row[0] is password column wheere hashed password is stored
+        session["email"] = email 
+        flash("Login success")
+        return redirect(url_for("home"))
+    else:
+        flash("Invalid email or password")
+        return render_template("login.html")
+
+app.run(host='0.0.0.0', port=5001, debug=True)

@@ -1,3 +1,4 @@
+
 x=input("enter x ")
 y=input("enter y ")
 z=input("enter z ")
