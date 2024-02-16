@@ -17,15 +17,15 @@ cursor = db.cursor()
 def index():
     return render_template("index.html")
 
-@app.route('/home')
+@app.route('/user/home')
 def home():
     return render_template("home.html")
 
-@app.route('/register_page', methods=["GET"])
+@app.route('/user/register_page', methods=["GET"])
 def register_page():
     return render_template("register.html")
 
-@app.route('/register', methods=["POST"])
+@app.route('/user/register', methods=["POST"])
 def register():
     name = request.form["name"]
     email = request.form["email"]
@@ -42,11 +42,11 @@ def register():
     flash("You were successfully registered")
     return redirect(url_for("home"))
 
-@app.route('/login_page', methods=["GET"])
+@app.route('/user/login_page', methods=["GET"])
 def login_page():
     return render_template("login.html")
 
-@app.route('/login', methods=["POST"])
+@app.route('/user/login', methods=["POST"])
 def login():
     email= request.form["email"]
     password = request.form["password"]
@@ -63,5 +63,34 @@ def login():
     else:
         flash("Invalid email or password")
         return render_template("login.html")
+
+@app.route("/user/profile/<user_id>", methods=['GET'])
+def profile(user_id):
+    user_id = request.view_args['user_id']
+    sql = "SELECT name, email, phone FROM users WHERE id = %s"
+    cursor.execute(sql, (user_id,))
+    row = cursor.fetchone()
+    return render_template("profile.html", data= {"user_id": user_id, "name": row[0], "email": row[1]})
+
+
+@app.route('/user/search', methods=['GET'])
+def search():
+    args = request.args
+    name = args.get('name')
+    sql = f"SELECT name, email, phone FROM users WHERE name like '{name}%'"
+    cursor.execute(sql)
+    rows = cursor.fetchall()
+    results = []
+    for row in rows:
+        results.append(
+            {
+              "name": row[0], 
+              "email": row[1]
+            }
+        )
+    if rows:
+        return render_template("user_search.html", results = results )
+    else:
+        return "User not found"
 
 app.run(host='0.0.0.0', port=5001, debug=True)

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+</head>
+<body>
+
+   <h1> Search page </h1> <br> <br>
+
+    {% for dict_item in results %}
+      {% for key, value in dict_item.items() %}
+       {{key}} : {{value}} <br>
+      {% endfor %}
+      <hr>
+    {% endfor %}
+ 
+</body>
+</html>
