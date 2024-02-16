@@ -93,12 +93,5 @@ def search():
         return render_template("user_search.html", results = results)
     else:
         return "User not found"
-@app.route("/user/delete", methods=["DELETE"])
-def user_delete(id):
-    guide = Guide.query.get(id)
-    db.session.delete(guide)
-    db.session.commit()
-
-    return guide_schema.jsonify(guide)
 
 app.run(host='0.0.0.0', port=5001, debug=True)
