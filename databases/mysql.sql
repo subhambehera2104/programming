@@ -21,6 +21,7 @@ drop table user;
 insert into users(name) values("subham");
 select * from users;
 delete from users where id=2;
+UPDATE users SET name = "Subham", email = "subham@gmail.com" WHERE id = 1;
 
 insert into users(name, email, passward, phone) 
 	values("dev", "dev@gmail.com", "4651@58", "1554358"),

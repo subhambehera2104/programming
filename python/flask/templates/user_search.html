@@ -5,14 +5,25 @@
 </head>
 <body>
 
-   <h1> Search page </h1> <br> <br>
+ <h1> Search page </h1> <br> <br>
 
-    {% for dict_item in results %}
-      {% for key, value in dict_item.items() %}
-       {{key}} : {{value}} <br>
-      {% endfor %}
-      <hr>
-    {% endfor %}
+ {% for dict_item in results %}
+     {% for key, value in dict_item.items() %}
+       {% if key == "user_id" %}
+        <form action="/user/update_page/{{value}}" method="POST">  
+           <input type="submit" value="Update">
+         </form> <br>
+
+         <form action="/user/delete/{{value}}" method="POST"> 	
+           <input type="submit" value="Delete">
+         </form> <br> 
+     {% endif %}
+
+        {{key}} : {{value}}   
+        
+ {% endfor %}
+ <hr>
+ {% endfor %}
  
 </body>
 </html>

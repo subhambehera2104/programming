@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile</title>
+</head>
+<body>
+
+	<center><h1>Update form</h1></center><br>
+
+	<form action="user/update\/{{value}}" method="POST">
+		<input type="text" name="name" value="{{data.name}}"><br><br>
+		<input type="email" name="email" value="{{data.email}}"><br><br>
+		<input type="number" name="phone" value="{{data.phone}}"><br><br>
+		<input type="submit" value="Update">
+	</form>
+
+</body>
+</html>
