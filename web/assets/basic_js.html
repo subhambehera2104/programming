@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>basic_js</title>
+</head>
+<body>
+   <h1 style="color:red;">Java script</h1>
+      <input type="text" name="firstName"  id="firstName" placeholder="first name">
+      <input type="text" name="lastName"  id="lastName" placeholder="Last name">
+      <input type="submit" value="submit" onclick="hi()">
+      <div id="result" style="font-size: 100px;color:green;"> </div>
+</body>
+    <script type="text/javascript">
+    	function hi() {
+    		var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var result = "Hi "+ firstName +" "+ lastName+"<br>How are you";
+             document.getElementById('result').innerHTML= result;
+    	}
+    </script>
+</html>

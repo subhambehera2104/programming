@@ -123,7 +123,7 @@ def user_update_page(user_id):
 def user_update(user_id):
     user_id = request.view_args['user_id']
     name = request.form['name']
-    emai = request.foprm['email']
+    email = request.form['email']
     phone = request.form['phone']
 
     sql = "UPDATE users SET name = %s, email = %s , phone=%s WHERE id = %s"

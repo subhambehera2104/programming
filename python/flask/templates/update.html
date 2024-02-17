@@ -7,7 +7,7 @@
 
 	<center><h1>Update form</h1></center><br>
 
-	<form action="user/update\/{{value}}" method="POST">
+	<form action="/user/update/{{data.user_id}}" method="POST">
 		<input type="text" name="name" value="{{data.name}}"><br><br>
 		<input type="email" name="email" value="{{data.email}}"><br><br>
 		<input type="number" name="phone" value="{{data.phone}}"><br><br>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sign up
+	</title>
+	<style type="text/css">
+		.center{
+			text-align: center;
+		}
+		.border{
+			margin-top:3%; 
+			margin-left:36%;
+			padding-left: 3%; 
+			border: 2px solid;
+			width: 300px;
+			height: 500px;
+			color: #190be0;
+		}
+		input,label{
+			margin-top: 1%; 
+			float: left;
+			text-align: left;
+
+		}
+
+	   #radio{
+	   	   text-align: left;.
+	   	   float:left; 
+	   }
+
+	   #dob{
+	   	   text-align: left;
+	   	   float:left; 
+	   }
+      
+	</style>
+</head>
+<body bgcolor="#fffAfaA">
+
+	<DIV class="border">
+		<h1>Sign Up</h1> 
+		<form action="/signup" method="post">
+			<input type="text" name="full_name" placeholder="Enter full name" required="true"><br>
+			<input type="email" name="email" placeholder="Enter email"><br><br>
+
+			<label>Gender</label> <br>
+			<div id="radio"><input class="radio" type="radio" name="gender" value="Male">Male</input> <br>
+			<input type="radio" name="gender" value="Female">Female</input><br></div><br><br>
+			
+
+			<input type="password" name="password" placeholder="Enter password"><br>
+			<input type="password" name="confirm_password" placeholder="Enter confirm password"><br><br>
+               <div id="dob"><input type="date" name="dob"></div><br><br>
+			
+
+			<input type="number" name="phone"><br><br>
+			<input type="color" name="favourite_color"><br><br>
+			<input type="checkbox" name="terms_conditions" value="I accept terms conditions"> </input>I accept terms conditions<br><br>
+			<input type="checkbox" name="terms_conditions" value="I accept "></inupt>I accept<br><br>
+
+             <div style="margin-left: 30%">
+             	<input type="submit" value="signup" onclick="alert('submitted successfully')">
+             </div>
+			
+
+
+
+		</form>
+	</DIV>
+</body>
+</html>
