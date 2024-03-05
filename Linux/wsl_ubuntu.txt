@@ -1,0 +1,34 @@
+												Linux terminal
+											   ----------------
+ls -----> List items
+ls -a  ----> List items with all hidden files
+ls -lstrh ----> 
+
+# if your nto have a folder, thats why use this commit
+mkdir -----> Make directory(Folder)
+
+# if you want a chane directory (Folder), thats why use this commit
+cd <directory(Folder)> -----> change the directory(Folder)
+cd .. ------> Go back to folder
+
+pwd ----> Present warking directory(Folder)
+
+#Rename the folder or move the folder
+mv <old file name> <new file name> ----> rename the file name or move
+
+#coppy
+cp <old file name> <new file name> ----> Coppy the file 
+
+#If you want remove the file 
+rm <File name> ----> Remove the file 
+
+#If you want a all file delete(remove) 
+rm -rf <directory(Folder)> ---> Remove all file or folder. # Here r means recursive files of a directory(Folder) and rf means remove all files/folders
+
+#Display the file
+cat <file name> ---->display the file
+
+#change permisssion of file/folder
+chmod 777 -r <dirctory(folder) name>
+chmod 777 <File name>
+

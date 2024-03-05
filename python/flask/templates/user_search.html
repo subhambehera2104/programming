@@ -2,28 +2,51 @@
 <html>
 <head>
 	<title>Search</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .jumbotron{
+      background-color: pink;
+    }
+    .button{
+      background-color: orange;
+      height: 37px;
+      border-radius: 10px;
+      width: 70px;
+    }
+    .btn{
+      background-color: red;
+      border-radius: 10px;
+      width: 70px;
+    }
+  </style>
+
 </head>
 <body>
 
- <h1> Search page </h1> <br> <br>
-
- {% for dict_item in results %}
+    <div class="jumbotron text-center">
+      <h1> Search page </h1> <br> <br>
+     </div>
+  <div class="container">
+     {% for dict_item in results %}
      {% for key, value in dict_item.items() %}
-       {% if key == "user_id" %}
-        <form action="/user/update_page/{{value}}" method="POST">  
-           <input type="submit" value="Update">
-         </form> <br>
+     {% if key == "user_id" %}
+     <form action="/user/update_page/{{value}}" method="GET">  
+       <span class="glyphicon glyphicon-pencil"></span> <input type="submit" value="Update" class="button">
+     </form> <br>
 
-         <form action="/user/delete/{{value}}" method="POST"> 	
-           <input type="submit" value="Delete">
-         </form> <br> 
+     <form action="/user/delete/{{value}}" method="POST"> 	
+       <span class="glyphicon glyphicon-trash"></span> <input type="submit" value="Delete" class="btn">
+     </form> <br> 
      {% endif %}
 
-        {{key}} : {{value}}   
-        
- {% endfor %}
- <hr>
- {% endfor %}
- 
+     {{key}} : {{value}}   
+
+     {% endfor %}
+     <hr>
+     {% endfor %}
+ </div>
 </body>
 </html>

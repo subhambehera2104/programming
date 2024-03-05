@@ -1,12 +1,53 @@
-echo "# url_shortener" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:subhambehera2104/url_shortener.git
-git push -u origin main
+														Github
+													-------------
+# ssh key genrtion 
+ssh key -gen
+#copy key from ssh folder to Github settings 
+
+#add the which git user's ssh key 
+git config --gobal user.email"YOUR EMAIL"
+git config --gobal user.name"YOUR GIT USER NAME"
+
+#New project(Repogitory) or repo
+mkdir <directory(Folder)>
+cd <dir>
+git init     #here init means initalization.
+
+#check the git init folder
+ls -a
+
+#git clone
+git clone <ssh url>
+#create repo with name
+-> Go to github side 
+-> Click the new repogitory
+-> Fill the repogitory name 
+
+# If you want your Github project pulic 
+-> Click the public button
+
+# If you want your Github project private 
+-> Click the private button
+
+# Add file/folder and write the code.
+-> Go to terminal/command
+git status # If here your folders/files name will be red color so that your files/folders is not push in github acount 
+
+#add the folders/files to Github
+git add <file name/folder name> #if you wnat push anyone folder/file, you can use this commit
+
+git add --all # If you want push all folder/file, you can use this commit
+
+#Check the file/folder push or no
+git status # If here your folders/files name will red color so that your files/folders is not push or here will color is green so that your file/folder is redy to push in Github
+
+# writ the commit 
+git commit -m "write the commit" # Here m means message
+
+# then you can push folder/file
+git push origin <branch name> # origin means like a git remote
+
+#Check the branch name
+git branch ---> which branch is activited
 
 
-git remote add origin git@github.com:subhambehera2104/url_shortener.git
-git branch -M main
-git push -u origin main

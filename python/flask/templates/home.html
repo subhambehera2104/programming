@@ -2,11 +2,27 @@
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.jumbotron{
+			background-color: pink;
+		}
+	</style>
 </head>
 <body>
-
-	<center>
+	<div class="jumbotron text-center">
 		<h1>Welcome</h1>
-	</center>
+		<i class="fa fa-spinner fa-pluse"></i>
+		<strong>Hello {{data.name}}</strong>
+
+		<form action="/user/search" method="POST"> 
+			<input type="text" name="name" placeholder="Enter name"	>
+			<span class="glyphicon glyphicon-search"></span> <input type="submit" value="search" class="btn">
+		</form> <br> 
+		
+	</div>
 </body>
 </html>

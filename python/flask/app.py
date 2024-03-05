@@ -30,11 +30,11 @@ def register_page():
 def register():
     
     name = request.form['name']
-    emai = request.foprm['email']
+    email = request.form['email']
     password = request.form['password']
     phone = request.form['phone']
-    gender = request.form['m']
-    gender = request.form['f']
+    gender = request.form['gender']
+
 
     hashed_password = generate_password_hash(password)
     insert_query = "INSERT INTO users (name, email, password, phone, gender) VALUES (%s, %s, %s, %s, %s)"
@@ -53,14 +53,14 @@ def login():
     email = request.form["email"]
     password = request.form["password"]
 
-    sql= "SELECT password FROM user WHERE email = %s"
+    sql= "SELECT id, name, password FROM users WHERE email = %s"
     cursor.execute(sql, (email,))
     row= cursor.fetchone()
-    if row and check_password_hash(row[0], password):
+    if row and check_password_hash(row[2], password):
         #row[0] is password column where haashed password is stored
-        session["email"] = emai
-        flash("login susccess")
-        return render_template(url_for("home"))
+        session["email"] = email
+        flash("login success")
+        return render_template("home.html", data={"user_id": row[0], "name": row[1]})
     else:
         flash("Invalid email or password")
         return render_template("login.html")
@@ -77,11 +77,7 @@ def user_profile(user_id):
     else:
         return "User not found"
 
-
-@app.route('/user/search', methods=['GET'])
-def search():
-    args = request.args
-    name = args.get('name')
+def _search_helper(name):
     sql = f"SELECT id, name, email, phone FROM users WHERE name like '{name}%'"
     cursor.execute(sql)
     rows = cursor.fetchall()
@@ -100,6 +96,16 @@ def search():
     else:
         return "User not found"
 
+@app.route('/user/search', methods=['GET'])
+def search_by_query_param():
+    args = request.args
+    name = args.get('name') # ? query param
+    return _search_helper(name)
+
+@app.route('/user/search', methods=['POST'])
+def search():
+    name = request.form["name"]
+    return _search_helper(name)
  
 @app.route('/user/delete/<user_id>', methods=["POST"])
 def user_delete(user_id):

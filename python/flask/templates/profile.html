@@ -2,13 +2,27 @@
 <html>
 <head>
 	<title>Profile</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.jumbotron{
+			background-color: pink;
+		}
+		.glyphicon{
+			size: 10px;
+		}
+	</style>
 </head>
 <body>
-
-    <center><h1>Welcome</h1></center><br>
-
-    Name : {{data.name}} <br>
-    Email : {{data.email}} <br>
-    phone : {{data.phone}}
+	<div class="jumbotron text-center">
+		<h1>welcome</h1>
+	  <div class="container text-center">
+	   <span class="glyphicon glyphicon-user"></span> Name : {{data.name}} <br>
+	    <span class="glyphicon glyphicon-envelope"></span> Email : {{data.email}} <br>
+	    <span class="glyphicon glyphicon-earphone"></span> phone : {{data.phone}}
+      </div>
+    </div>
 </body>
 </html>

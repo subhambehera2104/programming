@@ -2,19 +2,32 @@
 <html>
 <head>
 	<title>signup</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.jumbotron{
+			background-color: pink;
+		}
+		.btn{
+			background-color: orange;
+		}
+	</style>
 </head>
 <body>
+	<div class="jumbotron">
 	<center><h1>Registration form</h1>
 <form action="/user/register" method="POST">
-	<input type="text" name="name" placeholder="Enter Name"><br><br>
-	<input type="email" name="email" placeholder="Enter E-mail"><br><br>
-	<input type="password" name="password" placeholder="Enter password"><br><br>
-	<input type="number" name="phone" placeholder="Enter phone number"><br><br>
+	<span class="glyphicon glyphicon-user"></span> <input type="text" name="name" placeholder="Enter Name"><br><br>
+	<span class="glyphicon glyphicon-envelope"></span> <input type="email" name="email" placeholder="Enter E-mail"><br><br>
+	<span class="glyphicon glyphicon-lock"></span> <input type="password" name="password" placeholder="Enter password"><br><br>
+	<span class="glyphicon glyphicon-earphone"></span> <input type="number" name="phone" placeholder="Enter phone number"><br><br>
 	<label>Gender</label><br>
-	<input type="radio" name="male" value="m">Male</input>
-	<input type="radio" name="female" value="f">Female</input><br><br>	
-	<input type="submit" value="Register">
-
+	<input type="radio" name="gender" value="m">Male</input>
+	<input type="radio" name="gender" value="f">Female</input><br><br>	
+	<input type="submit" value="Register" class="btn">
+	</div>
 </form>
 </center>
 </body>
