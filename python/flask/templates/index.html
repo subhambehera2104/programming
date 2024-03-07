@@ -7,20 +7,42 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<style>
-		.jumbotron{
-			background-color: pink;
-		}
-		.glyphicon{
-			color: red;
-		}
-	</style>
+  <link rel="stlyleshet" href="../static/css/style.css">
+  <style rel="stlyleshet">
+.jumbotron
+{
+    background-color: pink;
+}
+nav{
+  background-color: orangered;
+}
+  </style>
+
 </head>
 <body>
- <div class="jumbotron text-center">
- 	<h1>Chouse options</h1><br><br>
- 	 <span class="glyphicon glyphicon-asterisk"></span> <a href="/user/register_page"> Register</a><br>
-    <span class="glyphicon glyphicon-asterisk"></span> <a href="/user/login_page"> Login</a>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="/user/register_page">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul> 
+    </div>
+  </div>
+</nav>
+
+	<div class="jumbotron text-center">
+    <h1>Welcome</h1>
  </div>
+
+ hi
 </body>
 </html>

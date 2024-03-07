@@ -13,5 +13,5 @@ gender VARCHAR(1) NOT NULL,
 created_at datetime default current_timestamp,
 updated_at datetime default current_timestamp 
 );
-insert into users(name, email, password, gender)
-value("subham behera", "subhambehera2104@gmail.com", "12345678", "m");
+insert into users(name, email, password, phone, gender)
+value("subham behera", "subhambehera2104@gmail.com", "12345678", "8658159756", "m");

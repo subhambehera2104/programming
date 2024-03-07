@@ -18,11 +18,9 @@
 		<i class="fa fa-spinner fa-pluse"></i>
 		<strong>Hello {{data.name}}</strong>
 
-		<form action="/user/search" method="POST"> 
-			<input type="text" name="name" placeholder="Enter name"	>
-			<span class="glyphicon glyphicon-search"></span> <input type="submit" value="search" class="btn">
-		</form> <br> 
-		
+		   <form action="/user/delete/{{value}}" method="POST"> 	
+       <span class="glyphicon glyphicon-trash"></span> <input type="submit" value="Delete" class="btn">
+     </form> <br> 
 	</div>
 </body>
 </html>
