@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<style>
-		.jumbotron{
-			background-color: pink;
-		}
-	</style>
-</head>
-<body>
-	<div class="jumbotron text-center">
-		<h1>Welcome</h1>
-		<i class="fa fa-spinner fa-pluse"></i>
-		<strong>Hello {{data.name}}</strong>
+	{% include 'base/header.html' %}
 
-		   <form action="/user/delete/{{value}}" method="POST"> 	
-       <span class="glyphicon glyphicon-trash"></span> <input type="submit" value="Delete" class="btn">
+	<div class="jumbotron text-center">
+		<h1><img src="/static/images/welcome.png" style="height: 80px;"> Welcome <img src="/static/images/welcome.png" style="height: 80px;"></h1>
+		<!-- <div class="loader"></div> -->
+		<strong><h3> Hello {{data.name}} </h3></strong><br>
+		   <form action="/user/search" method="POST"> 
+			<input type="text" name="name" placeholder="Enter name" style="width: 500px; height: 30px; color: black;" required>	
+			<a href="#" class="btn1 btn-default btn-lg" style="border-radius: 8px; height: 40px;">	
+			<span class="glyphicon glyphicon-search" style="color: f4511e;"></span>
+			Search</a>
      </form> <br> 
 	</div>
-</body>
-</html>
+
+	{% include 'base/footer.html' %}

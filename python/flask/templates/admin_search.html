@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>mentorX | admin file</title>
+        <script src="https://code.jquery.com/jquery-1.12.4.js">
+         </script> 
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+        </script> 
+         <script> 
+            $(document).ready(function() { 
+                // List of Items   
+                var items = [ 
+                    "C++", 
+                    "Java", 
+                    "Python", 
+                    "C#", 
+                    "DSA", 
+                    "STL", 
+                    "Self Placed", 
+                    "Android", 
+                    "Kotlin", 
+                    "GeeksforGeeks", 
+                    "GFG", 
+                ]; 
+                // jQuery inbuild function. 
+                $("#auto").autocomplete({ 
+                    // This function takes words list as a source. 
+                    source: items  
+                }); 
+            }) 
+        </script> 
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <style>
+            .jumbotron{
+                background-color: orangered;
+            }
+         </style>
+    </head>
+    <body>
+        <div class="text-center jumbotron">
+            <h1 style="color: white;">Search file</h1>
+            <input type="text" id="auto" placeholder="Enter your file name" style="width: 600px;"/><span><button style="width: 80px;">Search</button></span>
+         </div>
+    </body>
+</html>

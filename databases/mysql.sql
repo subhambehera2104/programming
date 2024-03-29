@@ -12,7 +12,7 @@ create table users(
 	modified_at datetime default current_timestamp
 );
 show tables;
-desc users;
+desc users; 
 alter table users drop column name;
 alter table users drop column  modifide_at;
 alter table users add column modified_at datetime default current_timestamp;

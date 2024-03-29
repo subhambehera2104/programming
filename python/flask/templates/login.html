@@ -1,13 +1,5 @@
- <html>
-     <head>
-         <title>login page</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="static/css/style.css">
-     </head>
-     <body>
+  {% include 'base/header.html' %}
+
     <div class="jumbotron text-center">
         <div class="col-md-6">
             <img src="static/images/signin-image-jpg">
@@ -16,9 +8,8 @@
                 <form action="/user/login" method="POST">
                 <input type="email" name="email" placeholder="Enter E-mail"><br><br>
                 <input type="password" name="password" placeholder="Enter password"><br><br>
-                <input type="submit" value="Login">
+              <input type="submit" value="Login">
             </form>
         </div>
     </div>
-     </body>
- </html>
+    {% include 'base/footer.html' %}
