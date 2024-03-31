@@ -2,6 +2,7 @@ from flask import Flask, request, session, render_template, url_for, flash, redi
 import mysql.connector
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from random import choice
 
 app = Flask(__name__)
 app.secret_key = "subhAM123$%"
@@ -195,26 +196,33 @@ def admin_pannel():
 def signout(user_id):
     return render_template("index.html")
 
+
+def generate_4_digit_otp():
+    numbers = [str(i) for i in range(0,9)]
+    otp =  ''.join(choice(numbers) for i in range(4))
+    return otp
+
+
 @app.route('/user/generate_otp', methods=['POST'])
 def generate_otp():
     email = request.form['email']
-    otp=1234
+    otp= generate_4_digit_otp()
     sql = "UPDATE users SET otp=%s WHERE email=%s"
     cursor.execute(sql, (otp, email))
     db.commit()
     return render_template("index.html")
 
-@app.route('/user/veryfi_otp', methods=['POST'])
+@app.route('/user/verify_otp', methods=['POST'])
 def verify_otp():
     email = request.form['email']
     otp = request.form['otp']
-    sql = "SELECT otp FORM users WHERE email=%s"
+    sql = "SELECT otp, name FROM users WHERE email=%s"
     cursor.execute(sql, (email,))
     row = cursor.fetchone()
     if row[0] == otp:
-        return render_template("home.html")
+        return render_template("home.html", data= {"otp": row[0], "name": row[1]})
     else:
-        return "Your login faield! Please try agin"
+        return "Your otp is worng! Please try agin"
     
 
 app.run(host='0.0.0.0', port=5001, debug=True)
