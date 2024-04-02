@@ -17,15 +17,15 @@ db = mysql.connector.connect(
     password="12345678",
     database="flask_db"
 )
-cursor = db.cursor()
-
 @app.route('/')
 def index():
     return render_template("index.html")
 
 @app.route("/user/register_page", methods=['GET'])
 def register_page():
-    return render_template("register.html")
+    return render_template("register.html")cursor = db.cursor()
+
+
 
 
 @app.route("/user/register", methods=['POST'])

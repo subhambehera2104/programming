@@ -232,7 +232,7 @@ insert into users(name, email, passward, phone)
 
 insert into products(name, description, mrp, sale_price) 
 values("duster", "This duster is use a clear the blacKbord", 80.50, 75),
-("keybord", "this keybord is ");
+("keybord", "this keybord brand is intex", 700, 699);
 
 insert into carts(user_id)
 values(5);

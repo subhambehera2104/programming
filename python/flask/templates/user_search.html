@@ -1,43 +1,51 @@
 {% include 'base/header.html' %}
 
-  
-  <div class="jumbotron text-center">
-    <h1> Search page </h1> <br> <br>
-  </div>
-  <div class="container">
-    {% for dict_item in results %}
-    {% for key, value in dict_item.items() %}
-    {% if key == "user_id" %}
-   
-    
-    
-    {% endif %}
-    <table id="t1" class="table table-striped table-bordered" width="100%"> 
-     <thead>
-        <tr>
-          <th>{{key}}</th> 
-          <th>
-            Action
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{value}}</td>
-          <td>             
-            <form action="/user/update_page/{{value}}" method="GET">  
-              <span class="glyphicon glyphicon-pencil"></span> <input type="submit" value="Update" class="btn2">
-           </form>
-           <form action="/user/delete/{{value}}" method="POST"> 	
+
+<div class="jumbotron text-center">
+  <h1> Search page </h1> <br> <br>
+</div>
+<div class="container">
+  <table id="t1" class="table table-hover table-dark" width="100%"> 
+    <thead style="background-color: rgba(36, 34, 34, 0.684); color: white;">
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      {% for dict_item in results %}
+      <tr>
+        {% for key, value in dict_item.items() %}
+        {% if key == "user_id" %}
+        <td>
+          {{value}}
+        </td>
+        <td>
+          {{value}}
+        </td>
+        <td>
+          sdg
+        </td>
+        <td>
+          dsglkj
+        </td>
+        <td>
+          <form action="/user/update_page/{{value}}" method="GET">  
+            <span class="glyphicon glyphicon-pencil"></span> <input type="submit" value="Update" class="btn2">
+          </form>
+          <form action="/user/delete/{{value}}" method="POST"> 	
             <span class="glyphicon glyphicon-trash"></span> <input type="submit" value="Delete" class="btn3">
-         </form> 
-          </td>
-        </tr>
-      </tbody>
-      {% endfor %}
-      <hr>
-      {% endfor %}
-    </table>
+          </form> 
+        </td>
+      </tr>
+        {% endif %}
+      </tr>
+    </tbody>
+    {% endfor %}
+    <hr>
+    {% endfor %}
+  </table>
   
-  </div>
-  {% include 'base/footer.html' %}
+</div>
+{% include 'base/footer.html' %}

@@ -1,8 +1,22 @@
 from flask import Flask,render_template,request,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 
+# import pymysql
+# pymysql.install_as_MySQLdb()
 
-app = Flask(__name__)
+# app = Flask(__name__)
+
+# username = 'flask_app'
+# password = '12345678'
+# host = 'localhost'
+# port = 3306
+# DB_NAME = 'todo_db'
+
+
+#mysql_url = f"mysql+pymysql://{username}:{password}@{host}:{port}"
+# app.config['SQLALCHEMY_DATABASE_URI']= mysql_url
+
+
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db= SQLAlchemy(app)
