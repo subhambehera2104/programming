@@ -12,6 +12,13 @@ create table users(
 	modified_at datetime default current_timestamp
 );
 show tables;
+SELECT * FROM users LIMIT 2;
+SELECT * FROM users ORDER BY created_at DESC LIMIT 2;
+SELECT DISTINCT gender FROM users;
+-- Select 2 new users
+SELECT * FROM users ORDER BY created_at DESC LIMIT 2;
+-- Select 2 old or first 2 users:
+SELECT * FROM users ORDER BY created_at ASC LIMIT 2;
 desc users; 
 alter table users drop column name;
 alter table users drop column  modifide_at;
