@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BMI calculator</title>
+	<style>
+		#message_1{
+			color: green;
+			font-size: 25px;
+		}
+		#message_2{
+			color: orange;
+			font-size: 25px;
+		}
+		.container{
+			text-align: center;
+			padding: 1%;
+			background-color: black;
+			color: #fff;
+			width: 400px;
+			height: 400px;
+			margin-top: 10%;
+			border-radius: 10px;
+		}
+		#weight{
+			font-size: 19px;
+			border: none;
+			border-radius: 5px;
+			width: 230px;
+		}
+		#height{
+			font-size: 19px;
+			border: none;
+			border-radius: 5px;
+			margin-top: 10px;
+		}
+		.warning{
+			color: #fff;
+			font-size: 19px;
+		}
+		#button{
+			border: none;
+			color: #fff;
+			background-color: #f4511e;
+			font-size: 19px;
+			margin-top: 10px;
+			border-radius: 5px;
+			height: 37px;
+		}
+		#logo{
+			height: 180px;
+			width: 200px;
+			padding: 0px;
+		}
+		#result{
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body bgcolor="#A7E6FF">
+	<center>
+		<div class="container">
+			<img src="assets/images/bmi.png" id="logo"><br><br>
+			<label class="warning">Enter Weight in Kg :</label>
+			<input type="number" name="weight" placeholder="Enter your weight in KG" id="weight"><br>
+			<label class="warning">Enter Height in Cm :</label>
+			<input type="number" name="height" placeholder="Enter your height in CM" id="height"><br>
+			<input type="button" value="Check BMI" onclick="checkbmi()" id="button"><br>
+			<div id="result"></div>
+		</div>
+  	</center>
+</body>
+<script>
+	function checkbmi() {
+		var weight = parseFloat(document.getElementById('weight').value);
+		var height = parseFloat(document.getElementById('height').value);
+		var bmi = weight/(height * height);
+
+		var bmiMessage = " ";
+		if (bmi <= 18.5) {
+			bmiMessage = "Your BMI is within the underweight range.";
+		}else if (bmi >= 18.5 && bmi <= 24.9) {
+			bmiMessage = "Your BMI is normal weight range.";
+		}else if (bmi >= 25 && bmi <= 29.9) {
+			bmiMessage = "Your BMI is overrange weight.";
+		}else if (bmi > 29.9) {
+			bmiMessage = "Obesity";
+		}else {
+			bmiMessage = "Invalid input";
+		}
+		document.getElementById('result').innerHTML= "Your BMI is " + bmi.toFixed(2) + "<br>" + bmiMessage;
+	}
+</script>
+</html>
