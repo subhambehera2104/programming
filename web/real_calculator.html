@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Real Calculator</title>
+	<style>
+		.container{
+			width: 100%;
+			height: 100vh;
+			background: #e3f9ff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.calculator{
+			background: #91DDCF;
+			padding: 20px;
+			border-radius: 10px;		
+		}
+		.button{
+			height: 50px;
+			width: 50px;
+			font-size: 20px;
+			border-radius: 10px;
+			border: none;
+			background-color: #CDE8E5;
+		}
+		.button:hover{
+			color: white;
+			background-color: #f14e1c;
+		}
+		.space{
+			margin-top: 2%;
+		}
+		#scale1{
+			transition: all 0.3s;
+		}
+		#scale1:hover{
+			transform: scale(1.10);
+		}
+		#display{
+			border: 3px solid black;
+			height: 50px;
+			background-color: #fff;
+		}
+/*		#result{
+			border: 3px solid black;
+			height: 50px;
+			background-color: #fff;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="calculator">
+			<form>
+				<input type="text" id="output" style="height: 50px; width: 205px; font-size: 27px;">
+				<div id="result"></div>
+				<div class="space">
+
+					<input type="button" value="AC" class="button" style="margin-top: 1%" id="scale1" onclick="alldelete()">
+					<input type="button" value="←" class="button" id="scale1" onclick="backspace()">
+					<input type="button" value="%" class="button" id="scale1" onclick="calculator('%')">
+					<input type="button" value="/" class="button" id="scale1" onclick="calculator('/')">
+				</div>
+				<div class="space">
+					<input type="button" value="7" class="button" id="scale1" onclick="calculator('7')">
+					<input type="button" value="8" class="button" id="scale1" onclick="calculator('8')">
+					<input type="button" value="9" class="button" id="scale1" onclick="calculator('9')">
+					<input type="button" value="*" class="button" id="scale1" onclick="calculator('*')">
+				</div>
+				<div class="space">
+					<input type="button" value="4" class="button" id="scale1" onclick="calculator('4')">
+					<input type="button" value="5" class="button" id="scale1" onclick="calculator('5')">
+					<input type="button" value="6" class="button" id="scale1" onclick="calculator('6')">
+					<input type="button" value="-" class="button" id="scale1" onclick="calculator('-')">
+				</div>
+				<div class="space">
+					<input type="button" value="1" class="button" id="scale1" onclick="calculator('1')">
+					<input type="button" value="2" class="button" id="scale1" onclick="calculator('2')">
+					<input type="button" value="3" class="button" id="scale1" onclick="calculator('3')">
+					<input type="button" value="+" class="button" id="scale1" onclick="calculator('+')">
+				</div>
+				<div class="space">
+					<input type="button" value="00" class="button" id="scale1" onclick="calculator('00')">
+					<input type="button" value="0" class="button" id="scale1" onclick="calculator('0')">
+					<input type="button" value="." class="button" id="scale1" onclick="calculator('.')">
+					<input type="button" value="=" onclick="equal()" style="background-color: #f14e1c; color: white; height: 50px; width: 50px; border-radius: 10px; font-size: 20px; border: none;">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<script>
+	let display = " ";
+
+	function alldelete() {
+		display = '';
+		document.getElementById('output').value = '';
+		document.getElementById('result').value = '';
+	}
+	function calculator(value) {
+			display += value;
+			document.getElementById("output").value = display;
+			
+	}
+
+	function equal() {
+		try{
+			let result = eval(display);
+
+			if (result == Infinity || isNaN(result)) {
+				document.getElementById("result").innerHTML="Error";
+			}
+			else{
+				document.getElementById("result").innerHTML=result;
+			}
+		}	
+		catch (error){
+			document.getElementById("result").innerHTML="Invalid expression";
+			console.log(error);
+		}
+	}
+
+	function backspace() {
+		display = display.slice(0, -1);
+		document.getElementById('output').value = display;
+	}
+</script>
+</html>

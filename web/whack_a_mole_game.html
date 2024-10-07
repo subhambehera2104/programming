@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Whack-a-Mole</title>
+    <style type="text/css">
+    	body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+	}
+
+	h1 {
+	    margin-top: 20px;
+	}
+
+	.game-board {
+	    display: grid;
+	    grid-template-columns: repeat(3, 100px);
+	    grid-gap: 10px;
+	    justify-content: center;
+	    margin: 20px auto;
+	}
+
+	.mole {
+	    width: 100px;
+	    height: 100px;
+	    background-color: #8b4513;
+	    border-radius: 50%;
+	    cursor: pointer;
+	    position: relative;
+	    overflow: hidden;
+	}
+
+	.mole.active::before {
+	    content: '';
+	    position: absolute;
+	    width: 60px;
+	    height: 60px;
+	    background-color: #ffd700;
+	    border-radius: 50%;
+	    top: 20px;
+	    left: 20px;
+	}
+
+	.scoreboard {
+	    margin-top: 20px;
+	    font-size: 20px;
+	}
+</style>
+</head>
+<body>
+    <h1>Whack-a-Mole Game</h1>
+    <div class="game-board">
+        <div class="mole" id="mole1"></div>
+        <div class="mole" id="mole2"></div>
+        <div class="mole" id="mole3"></div>
+        <div class="mole" id="mole4"></div>
+        <div class="mole" id="mole5"></div>
+        <div class="mole" id="mole6"></div>
+        <div class="mole" id="mole7"></div>
+        <div class="mole" id="mole8"></div>
+        <div class="mole" id="mole9"></div>
+    </div>
+    <div class="scoreboard">
+        <span>Score: <span id="score">0</span></span>
+    </div>
+</body>
+<script>
+	let score = 0;
+	let activeMole = null;
+
+	const moles = document.querySelectorAll('.mole');
+	const scoreDisplay = document.getElementById('score');
+
+	function randomMole() {
+	    moles.forEach(mole => mole.classList.remove('active'));
+	    const index = Math.floor(Math.random() * moles.length);
+	    moles[index].classList.add('active');
+	    activeMole = moles[index];
+	}
+
+	function whackMole(event) {
+	    if (event.target === activeMole) {
+	        score++;
+	        scoreDisplay.textContent = score;
+	        activeMole.classList.remove('active');
+	        activeMole = null;
+	    }
+	}
+
+	moles.forEach(mole => mole.addEventListener('click', whackMole));
+
+	setInterval(randomMole, 1000);
+
+</script>
+</html>

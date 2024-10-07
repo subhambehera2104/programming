@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>calculator</title>
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <style>
+    	.inputbox{
+    		width: 420px;
+    		height: 260px;
+    		border: 2px solid black;
+			margin-top: 15%;
+			background-color: #ee7854;
+			border-radius: 10px;
+			font-family: 'Brush Script MT ', cursive;
+			font-style: oblique;
+    	}
+		#number1{
+			font-family: 'Brush Script MT ', cursive;
+			color: #f14e1c;
+			font-style: oblique;
+			width: 150px;
+		}
+		#number2{
+			font-family: 'Brush Script MT ', cursive;
+			color: #f14e1c;
+			font-style: oblique;
+			width: 150px;
+		}
+		.button:hover{
+			color:white;
+			background-color: #f14e1c;
+		}
+		.button{
+			height: 50px;
+			width: 50px;
+			font-size: 30px;
+			margin-top: 1%;
+			border-radius: 50px;
+		}
+		#result{
+			font-size: 30px;
+			margin-bottom: 100px;
+			margin-top: 0px;
+			color: #f14e1c;
+		}
+
+	</style>
+</head>
+<body background="assets/images/math_background.jpg" style="height: auto; width: auto;">
+<!-- 	<img src="assets/images/pin.png" style="height: 100px; margin-left: 500px; margin-top: 50%;">
+ -->	
+ 		<marquee direction="left">
+ 			<a href="subhambehera2104.github.io" style="color: white;">www.subhambehera2104.github.io</a>
+		</marquee>
+    <center>
+		<div class="inputbox">	
+			<h1 style="color: #fa1e1e">calculator</h1><br>
+			<!-- 	<form action="post"> -->
+				<input type="number" name="number1" id="number1" placeholder="Enter First number" style="height: 25px;">
+				<input type="number" name="number2" id="number2" placeholder="Enter First number" style="height: 25px;"><br>
+				<div style="border: 1px solid black; width: 318px; height: 40px; margin-top: 1%; background-color: white;">
+					<b><div id="result"></div></b>
+				</div>
+				<input type="button" value="+" onclick="sum()" class="button">
+				<input type="button" value="-" onclick="substrack()" class="button">
+				<input type="button" value="*" onclick="multiply()" class="button">
+				<input type="button" value="/" onclick="divde()" class="button">
+				<input type="button" value="%" onclick="mode()" class="button">
+				<!-- 	</form> -->
+
+		</div>
+	</center>
+</body>
+	<script type="text/javascript">
+		function sum() {
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			var result = parseFloat(num1) + parseFloat(num2);
+
+			document.getElementById('result').innerHTML=result;
+
+			//alert (result);
+		}
+
+		function substrack(){
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			var result = parseFloat(num1) - parseFloat(num2);
+
+			document.getElementById('result').innerHTML=result;
+		}
+
+		function multiply(){
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			var result = parseFloat(num1) * parseFloat(num2);
+
+			document.getElementById('result').innerHTML=result;
+		}
+
+		function divde(){
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			var result = parseFloat(num1) / parseFloat(num2);
+
+			document.getElementById('result').innerHTML=result;
+		}
+
+		function mode(){
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			var result = parseFloat(num1) % parseFloat(num2);
+
+			document.getElementById('result').innerHTML=result;
+		}
+	</script>
+</html>

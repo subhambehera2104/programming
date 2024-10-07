@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Star patterns</title>
+	<style>
+		.container{
+			padding: 2%;
+			background-color: black;
+			width: 600px;
+			text-align: center;
+
+		}
+		input{
+			padding: 8px;
+			margin: 10px 0;
+			font-size: 16px;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div class="container">
+			<input type="number" placeholder="Enter number" id="input">
+			<select name="patterns type" id="patterns-type">
+				<option value="square_in_star">Square in star</option>
+				<option value="triangle">Right triangle</option>
+				<option value="table_triangle">Table triangle</option>
+				<option value="dimon_triangle">Dimon triangle</option>
+			</select>
+			<button onclick="printPattern()">Print</button>
+		</div>
+		<div id="output"></div>
+	</center>	
+</body>
+<script>
+	function patternType(patternType, input) {
+		let result;
+		switch (patternType) {
+			case "square_in_star":
+				result = squareInStar(input);
+				break;
+			case "triangle":
+				result = rightTrianglePattern(input);
+				break;
+			case "table_triangle":
+				result = tableTriangle(input);
+				break;
+			case "dimon_triangle":
+				result = dimonTriangle(input);
+				break;
+		}
+		return result;
+	}
+
+	function printPattern() {
+		let input = document.getElementById('input').value;
+		let patternTypeValue = document.getElementById('patterns-type').value;
+		let res = patternType(patternTypeValue, input);
+
+		document.getElementById('output').innerHTML = res;
+	}
+
+	function squareInStar(n) {
+		let res = "";
+		for (let i = 0; i < n; i++) {
+			for (let j = 0; j < n; j++) {
+				res += " * ";
+			}
+			res += "<br>";
+		}
+		return res;
+	}
+
+	function rightTrianglePattern(n) {
+		let res = "";
+		for (let i = 1; i <= n; i++) {
+			for (let j = 0; j < i; j++) {
+				res += " * ";
+			}
+			res += "<br>";
+		}
+		return res;
+	}
+
+
+	function tableTriangle(n) {
+		let res = "";
+		let count = 1;
+		let mult = 1;
+		for (let i = 1; i <= n; i++) {
+			for (let j = 1; j <= i; j++) {
+				mult = n*count;
+				res += mult + " ";
+				count++;
+			}
+			res += "<br>";
+		}
+		return res;
+	}
+
+	function dimonTriangle(n) {
+		let res = "";
+		for (let i = 1; i <= n; i++) {
+			for (let j = 0; j < i; j++) {
+				res += " * ";
+			}
+			for (let k = 0; k < i; k++) {
+				for (let l = 1; l <= n; l++) {
+					res += " * ";	
+			}
+		}
+		res += "<br>";
+		}
+		return res;
+	}
+</script>
+</html>

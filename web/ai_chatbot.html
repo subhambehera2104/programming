@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #D1E9F6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container {
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+}
+
+#send-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #f4511e;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin: 10px 0;
+}
+
+.message.user {
+    text-align: right;
+}
+
+.message.bot {
+    text-align: left;
+}
+
+.message p {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.message.user p {
+    background-color: #f4511e;
+    color: white;
+}
+
+.message.bot p {
+    background-color: pink;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+</body>
+<script>
+    // Predefined responses to simulate AI behavior
+const responses = {
+    "hello": "Hi there! Welcome to Chatbot, where intelligence meets innovation. Explore our cutting-edge AI solutions designed to transform industries, enhance efficiency, and empower businesses worldwide.",
+    "thanks": "You're welcome. How can I help you today?",
+    "hi": "Hi there! Welcome to Chatbot, where intelligence meets innovation. Explore our cutting-edge AI solutions designed to transform industries, enhance efficiency, and empower businesses worldwide.",
+    "where are you?": "I don't have a village/city, but you can contact with me, even you can spend tiem with me.",
+    "where are you": "You have few grammer mistake.<br> <br>There will be <b>Where are you?</b>. If you watn to minimize you grammer mistake so you can try the sivi app there have some courses for grammer and you can try to call with free.I don't have a village/city, but you can contact with me, even you can spend tiem with me.",
+    "how are you?": "I'm just a program, but I'm doing well! How can I assist you?",
+    "what is your name?": "I don't have a name, but you can call me Chatbot.",
+    "bye": "Goodbye! Have a great day!",
+    "which is the best website for coder": "There are several websites that offer great resources for coding, depending on what you're looking for—learning, problem-solving, or reference. Here are some of the best:<br><br><ol><li><b> For Learning: </b></li><ul><li><a href='https://www.freecodecamp.org/'>FreeCodeCamp:</a>A free, comprehensive platform offering tutorials and hands-on coding exercises in web development, Python, and more.</li><br><li>Codecademy: Interactive courses that teach coding in a wide range of languages like JavaScript, Python, and HTML/CSS.</li></ul></ol>",
+    // Add more responses as needed
+};
+
+// Function to append a message to the chat box
+function appendMessage(sender, text) {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message", sender);
+    messageElement.innerHTML = `<p>${text}</p>`;
+    
+    const chatBox = document.getElementById("chat-box");
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;  // Scroll to the bottom
+}
+
+// Function to get a response from the bot
+function getBotResponse(userMessage) {
+    const lowercasedMessage = userMessage.toLowerCase();
+    return responses[lowercasedMessage] || "Sorry, I don't understand that. My verson will update a few moment.";
+}
+
+// Event listener for the send button
+document.getElementById("send-button").addEventListener("click", function () {
+    const userInput = document.getElementById("user-input");
+    const userMessage = userInput.value.trim();
+
+    if (userMessage) {
+        appendMessage("user", userMessage);  // Show user's message
+
+        // Clear the input box
+        userInput.value = "";
+
+        // Get bot response
+        const botMessage = getBotResponse(userMessage);
+        appendMessage("bot", botMessage);
+    }
+});
+
+// Send message on pressing Enter key
+document.getElementById("user-input").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        document.getElementById("send-button").click();
+    }
+});
+
+</script>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exam result</title>
+	<style>
+		.container{
+			margin-top: 10%;
+			border: none solid black;
+			height: 200px;
+			width: 300px;
+			color: black;
+			background-color: #A7E6FF;
+			padding: 1%;
+			font-size: 20px;
+			border-radius: 10px;
+			box-shadow: 0px 10px 30px #888888;
+		}
+		body{
+			background-color: #A0DEFF;
+		}
+		#total{
+			background-color: rgb(46, 24, 106);
+			color: #fff;
+			border: none;
+			font-size: 17px;
+			height: 28px;
+			width: 50px;
+			border-radius: 6px;
+		}
+		#mode{
+			background-color: rgb(46, 24, 106);
+			color: #fff;
+			border: none;
+			font-size: 17px;
+			height: 28px;
+			width: 80px;
+			border-radius: 6px;
+		}
+		#persentage{
+			background-color: rgb(46, 24, 106);
+			color: #fff;
+			border: none;
+			font-size: 17px;
+			height: 28px;
+			width: 98px;
+			border-radius: 6px;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div class="container">
+			<table>
+				<tr>
+					<td><label>Math</label></td>
+					<td><input type="number" id="math" placeholder="Enter your math mark"></td>
+				</tr>
+				<tr>
+					<td><label>Science</label></td>
+					<td><input type="number" id="science" placeholder="Enter your science mark"></td>
+				</tr>
+				<tr>
+					<td><label>Computer</label></td>
+					<td><input type="number" id="computer" placeholder="Enter your computer mark"></td>
+				</tr>
+				<tr>
+					<td><label>English</label></td>
+					<td><input type="number" id="english" placeholder="Enter your english mark"></td>
+				</tr>
+				<tr>
+					<td><label>Odia</label></td>
+					<td><input type="number" id="odia" placeholder="Enter your odia mark"></td>
+				</tr>
+			</table><br>
+		
+			<div>
+				<button id="total" onclick="total()">Total</button>
+				<button id="mode" onclick="average()">Average</button>
+				<button id="persentage" onclick="percentage()">Persentage</button>
+			</div>
+				<div id="result"></div>
+		</div>
+	</center>
+</body>
+<script>
+	function getTotalMarks(){
+		let math = parseFloat(document.getElementById('math').value);
+		let science = parseFloat(document.getElementById('science').value);
+		let computer = parseFloat(document.getElementById('computer').value);
+		let english = parseFloat(document.getElementById('english').value);
+		let odia = parseFloat(document.getElementById('odia').value);
+		let total = math+science+computer+english+odia;
+
+		return total;
+	};
+
+	function total() {
+		let total = getTotalMarks();
+		document.getElementById('result').innerHTML = "Your total mark is " + total;
+	 };
+
+	 function average(){
+	 	//median
+	 	let avg = getTotalMarks()/5;
+	 	document.getElementById('result').innerHTML = "Your average is " + avg;
+	 };
+
+	 function percentage(){
+	 	let p = getTotalMarks()/500*100;
+	 	document.getElementById('result').innerHTML = p.toFixed(2) + "%";
+	 };
+</script>
+</html>

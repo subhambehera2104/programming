@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+</head>
+<body>
+
+    <input type="text" id="input1" placeholder="Enter soted array">
+    <input type="text" id="input2" placeholder="Enter soted array">
+    <button onclick=" mergeSort()">sort</button>
+    <div id="result"></div>
+
+    <script>
+       function mergeSort() {
+    let array1 = document.getElementById('input1').value.split(",").map(Number);
+    let array2 = document.getElementById("input2").value.split(",").map(Number);
+    let res = " ";
+    
+    for(let i = 0; i<array1.length;){
+        for(let j = 0; j<array2.length; ){
+           if (array1[i] <= array2[j]) {
+                res+=array1[i]+ ", ";
+                i++;
+            } else {
+                res+=array2[j] + ", ";
+                j++;
+            } 
+        }
+    }
+    let i;
+    let j;
+    for (; i < array1.length; i++) {
+        res+=array1[i] + ", ";
+    }
+    
+    for (; j < array2.length; j++) {
+        res+=array2[j] + ", ";
+    }
+    
+    document.getElementById('result').innerText = res;
+}
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator with eval function</title>
+	<style>
+		body{
+			background-color: #FFB1B1;
+		}
+		.container{
+			text-align: center;
+			border: none;
+			padding: 1%;
+			background-color: #FFD0D0;
+			width: 500px;
+			height: 300px;
+			margin-top: 150px;
+			border-radius: 10px;
+		}
+		#inputbox{
+			height: 50px;
+			width: 300px;
+			border-radius: 10px;
+			border: none;
+			font-size: 20px;
+		}
+		#calculate{
+			background-color: #070F2B;
+			color: #fff;
+			border: none;
+			height: 40px;
+			width: 130px;
+			font-size: 20px;
+			border-radius: 5px;
+			margin-top: 1%;	
+		}
+		#result{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<center>
+		<div class="container">
+			<h1>Calculator</h1>
+			<input type="text" placeholder="Enter expression (2+1-4)" id="inputbox"><br>
+			<input type="button" value="Calculate" onclick="calculator()" id="calculate">
+			<div id="result"></div>
+		</div>
+	</center>
+</body>
+<script>
+	function calculator() {
+		let input = document.getElementById('inputbox').value;
+		let result = eval(input)
+
+		document.getElementById("result").innerHTML= "Your anwer is " + result;	 
+	}
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple intrest</title>
+	<style>
+		#simpleintrest{
+			border: 2px solid #e3f9ff;
+			width: 300px;
+			height: 400px;
+			border-radius: 10px;
+			margin-top: 9%;
+			background-color: #e3f9ff;
+			box-shadow: 0px 12px 20px #888888; 
+		}
+		#button{
+			height: 30px;
+			width: 100px;
+			background-color: #f14e1c;
+			border-radius: 5px;
+			color: white;
+			transition: all 0.3s;
+		}
+		#button:hover{
+			transform: scale(1.10);
+			background-color: #f06e1c;
+			font-family: 'Brush Script MT ', cursive;
+			font-style: oblique;
+			box-shadow: 5px 8px 20px #888888; 
+		}
+	</style>
+</head>
+<body bgcolor="#A7E6FF">
+<center>
+	<div id="simpleintrest">
+		<img src="assets/images/simple_intrest.png" style="height: 150px; width: 200px;">
+	<table>
+		<tr>
+			<div style="margin-top: 40px;">
+				<td><label>Simple Intrest: </label></td>
+				<td><input type="number" name="princeple amount" placeholder="Enter princeple amount" id="princeple_amount"></td>
+			</div>
+		</tr>
+		<tr>
+			<td><label>Time: </label></td>
+			<td><input type="number" name="time" placeholder="Enter time" id="time"><br></td>
+		</tr>
+		<tr>
+			<td><label>Rate of intrest: </label></td>
+			<td><input type="number" name="rate" placeholder="Enter rate of intrest" id="rate"><br></td>
+		</tr>
+	</table><br>
+	<b><input type="button" value="Simple intrest" onclick="simpleIntrest()" id="button"></b><br><br>
+	<b><div id="result"></div></b>
+	</div>
+</center>
+</body>
+<script>
+	function simpleIntrest() {
+		var p = document.getElementById('princeple_amount').value;
+		var t = document.getElementById('time').value;
+		var r = document.getElementById('rate').value;
+		var s = parseFloat(p*t*r)/100;
+		var amount = parseFloat(p) +s;
+		document.getElementById('result').innerHTML="simple Interest is "+s +"<br> You need to return amount "+amount;
+	}
+</script>
+</html>

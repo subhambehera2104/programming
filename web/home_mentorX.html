@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>mentorX</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="icon" type="image/x-icon" href="https://pps.whatsapp.net/v/t61.24694-24/368438027_984768769435817_5029335465443396586_n.jpg?ccb=11-4&oh=01_Q5AaILJ6qbCF-28rRAIi6MrM7NWs_fpb9hfOPBuQvlr0JJnz&oe=66712239&_nc_sid=e6ed6c&_nc_cat=109">
+
+	<style>
+		#logo{
+			width: 400px;
+			padding: 10px;
+		}
+		nav{
+			background-image: linear-gradient(to left, #CAF4FF, #FFD0D0);
+
+		}
+		#signup{
+			border-radius: 20px;
+			width: 150px;
+			height: 40px;
+			font-size: 20px;
+			color: #fff;
+			background-color: #f4511e;
+		}
+		#myNavbar{
+			padding: 1%;
+		}
+		.contactbutton{
+			color: white;
+			background-color: rgb(46, 24, 106);
+			height: 40px;
+			width: 100px;
+			border-radius: 8px;
+			transition: all 0.3s;
+		}
+		.contactbutton:hover{
+			color: white;
+			background-color: #f4511e;
+			box-shadow: 0px 10px 20px #888888;
+			transform: scale(1.10);
+			border-top-color: #f4511e;
+			border-left-color: #f4511e; 
+
+		}
+		.nav-font{
+			color: #f4511e;
+		}
+		.explorebutton{
+			color: #fff;
+			background-color: rgb(46, 24, 106);
+			border-left-color: rgb(46, 24, 106);
+			border-top-color: rgb(46, 24, 106);
+			box-shadow: 5px 8px 20px #888888;
+			height: 50px;
+			width: 140px;
+			font-size: 20px;
+			margin-top: 3%;
+			transition: all 0.3s;
+		}
+		.explorebutton:hover{
+			color: #fff;
+			background-color: #f4511e;
+			border-left-color: #f4511e;
+			border-top-color: #f4511e;
+			transform: scale(1.10);
+			box-shadow: 0px 18px 20px #888888;
+		}
+		.learnmorebutton{
+			color: rgb(46, 24, 106);
+			background-color: #fff;
+			border-right: #fff;
+			border-bottom: #fff;
+			box-shadow: 5px 8px 20px #888888;
+			height: 51px;
+			width: 140px;
+			font-size: 20px;
+			margin-top: 3%;
+			transition: all 0.3s;
+			margin-left: 40px;
+		}
+		.learnmorebutton:hover{
+			color: #fff;
+			background-color: #f4511e;
+			border-left-color: #f4511e;
+			border-top-color: #f4511e;
+			transform: scale(1.10);
+			box-shadow: 0px 18px 20px #888888;
+		}
+		.projects{
+			margin-top: 15%;
+			font-size: 40px;
+			margin-left: 3%;
+		}
+		.projects1{
+			font-size: 40px;
+			margin-left: 3%;
+			margin-top: 2%;
+		}
+		#sc{
+			border: 1px solid #A1DD70;
+			background-color: #A1DD70;
+			color: #fff;
+			border-radius: 15px;
+			width: 280px;
+			height: 200px;
+			text-align: center;
+			padding-top: 3%;
+		}
+		#rc{
+			border: 1px solid orange;
+			background-color: orange;
+			color: #fff;
+			border-radius: 15px;
+			width: 280px;
+			height: 200px;
+			text-align: center;
+			padding-top: 3%;
+			margin-left: 2%;
+		}	
+		#sic{
+			border: 1px solid #3ABEF9;
+			background-color: #3ABEF9;
+			color: #fff;
+			border-radius: 15px;
+			width: 280px;
+			height: 200px;
+			text-align: center;
+			padding-top: 3%;
+			margin-left: 2%;
+		}
+		#tc{
+			border: 1px solid #FFD0D0;
+			background-color: #FFD0D0;
+			color: #fff;
+			border-radius: 15px;
+			width: 280px;
+			height: 200px;
+			text-align: center;
+			padding-top: 3%;
+		}
+		#bc{
+			border: 1px solid #BED7DC;
+			background-color: ;
+			color: #fff;
+			border-radius: 15px;
+			width: 280px;
+			height: 200px;
+			text-align: center;
+			padding-top: 3%;
+			margin-left: 2%;
+		}
+		#s{
+			border: 1px solid #4793AF;
+			background-color: #4793AF;
+			color: #fff;
+			border-radius: 15px;
+			width: 280px;
+			height: 200px;
+			text-align: center;
+			padding-top: 5%;
+			margin-left: 2%;
+		}
+		.pull-right{
+			transition: all 0.3s;
+		}
+		.pull-right:hover{
+			color: #fff;
+			background-color: #f4511e;
+			box-shadow: 10px 8px 20px #888888;
+			transform: scale(1.10);
+		}
+		footer{
+			padding: 1%;
+			background-color: black;
+			height: 500px;
+		}
+		#footer_logo{
+			height: 50px;
+			width: 50px;
+		}
+		#lastbutton{
+			color: #fff;
+			background-color: #f4511e;
+			width: 400px;
+			height: 50px;
+			border-radius: 50px;
+			font-size: 25px;
+			cursor: pointer; 
+			margin-bottom: 1%;
+			border-right-color: #f4511e;;
+		}
+		.footer-font{
+			color: #fff;
+			font-size: 20px; 
+			margin-top: 20%;
+		}
+		.footer-font:hover{
+			color: #f4511e;
+		}
+		.footer-font2{
+			color: #fff;
+			font-size: 20px;
+			margin-top: 9%;
+		}
+		.footer-font2:hover{
+			color: #f4511e;
+		}
+		#hr{
+			border-top: 3px dotted #f4511e;
+			width: 1200px;
+		}
+		#instagram{
+			color: #ee2a7b;
+			margin-left: 2px;
+		}
+		.footer-icon{
+			margin-right: 50%;
+			margin-top: 2%;
+		}
+		#location{
+			color: #fff;
+			background-color: #f4511e;
+			border: none;
+			border-radius: 5px;
+			font-size: 19px;
+			margin-top: 1%;
+			height: 37px;
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<!--   <div class="container"> -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<img src="https://mentorx.online/img/svg/logo.svg" id="logo">
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#about" style="color: #f4511e;"><h4>ABOUT</h4></a></li>
+					<li><a href="#portfolio" style="color: #f4511e;"><h4>PROJECTS</h4></a></li>
+					<li><a href="#contact"><button class="contactbutton">CONTACT</button></a></li>
+					<li><a href="signup.html"><button id="signup" title="Signup">Signup</button></a></li>
+				</ul>
+			</div>
+			<!--   </div> -->
+		</nav>
+		<div class="col-sm-12 row" style="margin-top: 15%;" id="about">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-5 container-fluid">
+				<p style="color: #f4511e; font-size: 60px;"><b>Your learning is our #1 priority.</b></p>
+				<p style="color: rgb(46, 24, 106); font-size: 20px;">Our Mentors have built real world projects and will help you to be industry and interview ready for top product companies. Mentors open the door, but you must enter by yourself. Learn from the global community of industry mentors</p>
+				<a href="#portfolio"><button class="explorebutton">Explore</button></a>
+				<a href="#portfolio"><button class="learnmorebutton">Learn more</button></a>
+			</div>
+			<div class="col-sm-5">
+				<img src="https://mentorx.online/img/svg/developer.svg">
+			</div>
+		</div>
+
+		<div id="portfolio">
+			<div class="col-sm-12 row projects">
+				<div class="col-sm-1"></div>
+				<a href="calculator_switch_case.html"><div class="col-sm-4" id="sc">Simple Calculator</div></a>
+				<a href="real_calculator.html"><div class="col-sm-4" id="rc">Real Calculator</div></a>
+				<a href="simpleintrest_new.html"><div class="col-sm-3" id="sic">Simple intrest Calculator</div></a>
+			</div>
+			<div class="col-sm-12 row projects1">
+				<div class="col-sm-1"></div>
+				<a href="temperature.html"><div class="col-sm-3" id="tc">Temperature Calculator</div></a>
+				<a href="bmi_calculator.html"><div class="col-sm-4" id="bc">BMI Calculator</div></a>
+				<a href="stopwatch.html"><div class="col-sm-4" id="s">Stopwatch</div></a>
+			</div>
+		</div>
+		<div id="contact">
+			<div class="row">
+				<div class="col-sm-4" style="margin-left: 5%; margin-top: 9%;">
+					<p style="color: #f4511e; font-size: 60px;"><b>Contact from</b></p><br>
+					<p style="color: rgb(46, 24, 106); font-size: 25px;">We are happy to hear from you for any mentor sessions and feedback</p>
+				</div>
+				<div class="col-sm-6" style="margin-top: 9%;">
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+						</div>
+						<div class="col-sm-6 form-group">
+							<input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+						</div>
+					</div>
+					<textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+					<div class="row">
+						<div class="col-sm-12 form-group">
+							<button class="btn btn-default pull-right" type="submit" style="color: #fff; background-color: rgb(46, 24, 106); width: 90px; font-size: 20px;">Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<a href="signup.html"><div class="container text-center"><button id="lastbutton">Signup for free</button></div></a>
+
+<footer class="container-fluid text-center">
+	<a href="#about" title="To Top">
+	     <span class="glyphicon glyphicon-chevron-up" style="color: #fff;"></span>
+	</a>
+ <div class="col-sm-12 row">
+	<div class="col-sm-4">
+		<a href="https://mentorx.online/">
+			<img src="https://pps.whatsapp.net/v/t61.24694-24/368438027_984768769435817_5029335465443396586_n.jpg?ccb=11-4&oh=01_Q5AaILJ6qbCF-28rRAIi6MrM7NWs_fpb9hfOPBuQvlr0JJnz&oe=66712239&_nc_sid=e6ed6c&_nc_cat=109" id="footer_logo">
+			<p style="color: #f4511e;">MentorX</p>
+		</a>
+			<p style="color: #fff; font-size: 17px;">Do you have any question?<br>Feel free to reach out.</p>
+			<a href="mailto:xtremechamps6@gmail.com" style="color: #f4511e; font-size: 30px;">Let's chat</a>
+	</div>
+		<div class="col-sm-1"><p class="footer-font">Tutorials</p>
+			<p><a href="https://www.w3schools.com/html/default.asp" style="color: #B6BBC4">HTML</a><br>
+				<a href="https://www.w3schools.com/css/default.asp" style="color: #B6BBC4">CSS</a><br>
+				<a href="https://www.w3schools.com/js/default.asp" style="color: #B6BBC4">JavaScript</a><br>
+				<a href="https://www.w3schools.com/python/default.asp" style="color: #B6BBC4">Python</a><br>
+				<a href="https://www.w3schools.com/c/index.php" style="color: #B6BBC4">C</a><br>
+				<a href="https://www.w3schools.com/cpp/default.asp" style="color: #B6BBC4">C++</a><br>
+			</p>
+		</div>
+			<div class="col-sm-2">
+				<p class="footer-font2">Design</p>
+				<p style="color: #B6BBC4"><a href="" style="color: #B6BBC4">Web Design</a><br>
+					<a href="" style="color: #B6BBC4">UI/UX Design</a><br>
+					<a href="" style="color: #B6BBC4">Mobile App Design</a><br>
+					<a href="" style="color: #B6BBC4">E-commerce Web Design</a><br>
+					<a href="" style="color: #B6BBC4">Leanding Website Design</a><br>
+					<a href="" style="color: #B6BBC4">Healthcare Web Design</a>
+				</p>
+			</div>
+				<div class="col-sm-1">
+					<p class="footer-font">Developement</p>
+				</div>
+				<p style="color: #B6BBC4; margin-top: 4%; margin-right: 30%;"><a href="" style="color: #B6BBC4">Back-end Developement</a><br>
+					<a href="" style="color: #B6BBC4">CMS Developement</a><br>
+					<a href="" style="color: #B6BBC4">Web Developement</a><br>
+					<a href="" style="color: #B6BBC4">Webflow Developement</a><br>
+					<a href="" style="color: #B6BBC4">Front-end Developement</a><br>
+					<a href="" style="color: #B6BBC4">HTML Developement</a>
+				</p><br>
+
+	     <hr id="hr">
+	     <div>
+	     	<p style="color: #ffff; margin-top: 1%; margin-right: 50%;">W3Schools is optimized for learning and aining. Examples <br>might be simplified to improve reading and learning. Tutorials,<br> references, and examples are constantly
+	      	reviewed to avoid <br>errors, but we cannot warrant full correctness of all content.<br>
+	      	You can learning codding in online or ofline.<br>
+	      	<button id="location">Location</button>
+	      </p>
+<!-- 	      <img src="https://mentorx.online/img/svg/logo.svg" style="height: 10px; margin-top: 0px;">
+ -->	     </div>
+	    <div class="footer-icon">
+	      <a href="https://www.linkedin.com/company/mentorxpro/">
+	      	<span class="fa fa-linkedin-square fa-2x" aria-hidden="true" style="color: #0072b1; "></span>
+	      </a>
+	      <a href="https://www.github.com/subhambehera2104">
+	      	<span class="fa fa-github fa-2x" aria-hidden="true" style="color: #fff; margin-left: 2px;"></span>
+	      </a>
+	      <a href="https://instagram.com/@subhambehera2104">
+	      	<span class="fa fa-instagram fa-2x" aria-hidden="true" id="instagram"></span>
+	      </a>
+	      <a href="https://pinterest.com/subhambehera2104">
+	      	<span class="fa fa-pinterest fa-2x" aria-hidden="true" style="color: #E60023; margin-left: 2px;"></span>
+	      </a>
+	      <a href="https://quora.com/">
+	      	<span class="fa fa-quora fa-2x" aria-hidden="true" style="color: #B92B27; margin-left: 2px;"></span>
+	      </a>
+	      <a href="https://youtube.com/">
+	      	<span class="fa fa-youtube-play fa-2x" aria-hidden="true" style="color: #ff0000; margin-left: 2px;"></span>
+	      </a>
+	      <a href="https://twitter.com/@subham_2104">
+	      	<span class="fa fa-twitter fa-2x" aria-hidden="true" style="color: #1da1f2; margin-left: 2px;"></span>
+	      </a>
+	    </div>
+  </div>
+</footer>
+</body>
+</html>

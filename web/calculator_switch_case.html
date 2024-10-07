@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculator</title>
+	<style>
+		.inputbox{
+			width: 420px;
+			height: 260px;
+			border: 2px solid black;
+			margin-top: 15%;
+			background-color: #ee7854;
+			border-radius: 10px;
+			font-family: 'Brush Script MT ', cursive;
+			font-style: oblique;
+		}
+		#number1{
+			font-family: 'Brush Script MT ', cursive;
+			color: #f14e1c;
+			font-style: oblique;
+			width: 150px;
+		}
+		#number2{
+			font-family: 'Brush Script MT ', cursive;
+			color: #f14e1c;
+			font-style: oblique;
+			width: 150px;
+		}
+		.button:hover{
+			color:white;
+			background-color: #f14e1c;
+		}
+		.button{
+			height: 50px;
+			width: 50px;
+			font-size: 30px;
+			margin-top: 1%;
+			border-radius: 50px;
+		}
+		#result{
+			font-size: 30px;
+			margin-bottom: 100px;
+			margin-top: 0px;
+			color: #f14e1c;
+		}
+
+	</style>
+</head>
+<body background="assets/images/math_background.jpg" style="height: auto; width: auto;">
+	<marquee direction="left">
+		<a href="subhambehera2104.github.io" style="color: white;">www.subhambehera2104.github.io</a>
+	</marquee>
+	<center>
+		<div class="inputbox">	
+			<h1 style="color: #fa1e1e">calculator</h1><br>
+			<!-- 	<form action="post"> -->
+				<input type="number" name="number1" id="number1" placeholder="Enter First number" style="height: 25px;">
+				<input type="number" name="number2" id="number2" placeholder="Enter First number" style="height: 25px;"><br>
+				<div style="border: 1px solid black; width: 318px; height: 40px; margin-top: 1%; background-color: white;">
+					<b><div id="result"></div></b>
+				</div>
+				<input type="button" value="+" onclick="calculator('+')" class="button">
+				<input type="button" value="-" onclick="calculator('-')" class="button">
+				<input type="button" value="*" onclick="calculator('*')" class="button">
+				<input type="button" value="/" onclick="calculator('/')" class="button">
+				<input type="button" value="%" onclick="calculator('%')" class="button">
+				<!-- 	</form> -->
+
+			</div>
+		</center>
+	</body>
+	<script>
+		function calculator(operetor) {
+			var number1 = parseFloat(document.getElementById('number1').value);
+			var number2 = parseFloat(document.getElementById('number2').value);
+			var result ="";
+
+		switch (operetor){
+			case '+': 
+			    result = (number1) + (number2);	
+			    break
+			case "-":
+				result = (number1) - (number2);
+				break	
+			case "*":
+				result = (number1) * (number2); 
+				break
+			case "/":
+				if (number2 == 0) {
+					alert("You can't divede a number by 0. You can try any number.")
+				}
+				else{
+					result = (number1) / (number2);	
+				}
+				break
+			case "%":
+				if (number2 == 0) {
+					alert("You can't divede a number by 0. You can try any number.")
+				}
+				else{
+					result = (number1) % (number2);	
+				}
+		}
+		document.getElementById('result').innerHTML="Your answer is " + result;
+	}
+</script>

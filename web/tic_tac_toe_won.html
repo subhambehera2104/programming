@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic toc toe</title>
+	<style>
+		.{
+			padding: 0px;
+		}
+		.container{
+			height: 70vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.game{
+			height: 60vmin;
+			width: 60vmin;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			column-gap: 1.5vmin;
+		}
+		.box{
+			height: 18vmin;
+			width: 18vmin;
+			border-radius: 20px;
+			font-size: 58px;
+			color: #f4511e;
+			border: none;
+			background-color: #BED7DC;
+		}
+		.msg{
+			color: #f4511e;
+			font-size: 50px;
+			margin-top: 300px;
+		}
+		.msgContainer{
+			height: 100vmin;
+		}
+		#newgame{
+			height: 50px;
+			font-size: 25px;
+			background-color: black;
+			color: #fff;
+			border-radius: 10px;
+			border: none;
+		}
+		#resetBtn{
+			height: 50px;
+			font-size: 25px;
+			background-color: black;
+			color: #fff;
+			border-radius: 10px;
+			border: none;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<center>
+	<div class="msgContainer hide">
+		<h1 class="msg"><b></b></h1>
+		<button id="newgame">New game</button>
+	</div>
+	<h1>Tic toc toe</h1>
+	<div class="container">
+		<div class="game">
+	    <button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		<button class="box"></button>
+		</div>
+	</div>
+	<button id="resetBtn">Reset game</button>
+	</center>
+<!-- 	<audio id="audio" autoplay src="assets/musig/game_sound.mp3"></audio> -->
+</body>
+<script>
+	let boxes = document.querySelectorAll(".box");
+	let resetBtn = document.querySelector("#resetBtn");
+	let newGm = document.querySelector("#newgame"); 
+	let msg = document.querySelector(".msg");
+	let msgContainer = document.querySelector(".msgContainer");
+	let turnO = true;
+	let boxSound = new Audio("assets/musig/box_sound.mp3");
+
+	const winnerPattern = [
+		[0, 1, 2],
+		[0, 3, 6],
+		[0, 4, 8],
+		[1, 4, 7],
+		[2, 5, 8],
+		[2, 4, 6],
+		[3, 4, 5],
+		[6, 7, 8],
+	]; 
+
+	boxes.forEach((box) => {
+		box.addEventListener("click", () => {
+			if (turnO) {
+				box.innerText = "O";
+				turnO = false;
+				boxSound.play()
+			} else{
+				box.innerText = "X";
+				turnO = true;
+				boxSound.play()
+			}
+			box.disabled = true;
+
+			checkWinner();
+		});
+	});
+
+	const resetGame = () => {
+		turnO = true;
+		enableBoxes();
+		msgContainer.classList.add("hide");
+	};
+
+	const newGame = () => {
+		turnO = true;
+		enableBoxes();
+		msgContainer.classList.add("hide");
+	};
+
+	const enableBoxes = () =>{
+		for(let box of boxes) {
+			box.disabled = false;
+			box.innerText = "";
+		}
+	};
+
+	const disableBox = () => {
+		for(let box of boxes) {
+			box.disabled = true;
+		}
+	};	
+	const showMessage = (winner) => {
+		msg.innerText = `Congratulations, Winner is player ${winner}`;
+		msgContainer.classList.remove("hide");
+		disableBox();
+
+		let winnerSound = new Audio("assets/musig/winning_sound.mp3");
+		winnerSound.play()
+	};
+
+	const checkWinner = () => {
+		for(let pattern of winnerPattern) {
+			let pos1Val = boxes[pattern[0]].innerText;
+			let pos2Val = boxes[pattern[1]].innerText;
+			let pos3Val = boxes[pattern[2]].innerText;
+
+			if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
+				if (pos1Val === pos2Val && pos2Val === pos3Val) {
+					showMessage(pos1Val);
+				}
+			}
+		}
+	};
+
+	resetBtn.addEventListener("click", resetGame);
+	newGm.addEventListener("click", newGame);
+</script>
+</html>

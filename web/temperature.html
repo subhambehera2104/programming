@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature</title>
+	<style>
+		.box{
+			padding: 30px;
+			border: 3px solid #AAD7D9;
+			width: 300px;
+			background-color: #AAD7D9/*BED7DC*/;
+			height: 200px;
+			margin-top: 9%;
+			margin-left: 1%;
+			border-radius: 10px;
+			font-size: 19px;
+		}
+		#temperature{
+			height: 25px;
+			font-size: 15px;
+			margin-left: 30px;
+			width: 150px;
+		}
+		.box-1{
+			padding: 30px;
+			border: 3px solid #AAD7D9;
+			width: 300px;
+			background-color: #AAD7D9;
+			height: 200px;
+			border-radius: 10px;
+			margin-left: 50%;
+		    margin-top: 9%;
+		}
+		.container{
+			display: flex;
+			padding: 1px;
+		}
+		#conversion-type{
+			height: 40px;
+			border-radius: 10px;
+			border: none;
+			font-size: 14.6px;
+			color: #fff;
+			background-color: #4793AF;
+		}
+	</style>
+</head>
+<body background="assets/images/[GIF] Weather.gif" style="background-repeat: no-repeat; background-size: 100% 700px;">
+	<center><h1 style="color: #E5E1DA;"><b>Temperature calculator</b></h1></center>
+	<div class="container">
+		<div class="box">
+			<center><b><h1 style="margin-top: 0px; color: #005C78;">Sesson 1</h1></b></center>
+			<table>
+				<tr>
+					<td>
+						<label>Temperature:</label>
+						<input type="number" placeholder="Enter temperature" id="temperature" required><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="conversion-type">Conversion type:</label>
+						<select name="conversion type" id="conversion-type">
+							<option value="ctf">Celcius to fahrenheit</option>
+							<option value="ftc">Fahrenheit to celcuis</option>
+						</select><br>
+					</td>
+				</tr>
+			</table>	
+			<button onclick="convertTemperatureByDropdown()">Convert</button>
+			<div id="dropdown-result"></div>
+		</div>
+		<div class="box-1">
+			<center><b><h1 style="margin-top: 0px; color: #005C78;">Sesson 2</h1></b></center>
+			<table>
+				<tr>
+					<td>
+						<label>Celcius</label>
+					</td>
+					<td>
+						<input type="number" placeholder="Enter temperature in Celcius" id="celcuis" required>
+					</td>
+					<td><button onclick="celciusToFahrenheit()">Celcius to Fahrenheit convert</button></td>
+				</tr>
+				<tr>
+					<td><label>Fahrenheit</label></td>
+					<td><input type="number" placeholder="Enter temperature in Fahrenheit" id="fahrenheit" required></td>
+					<td><button onclick="fahrenheitToCelcius()">Fahrenheits to Celcius convert</button></td>
+				</tr>
+			</table>
+			<div id="result"></div>
+		</div>
+	</div>
+</body>
+<script>
+	function output(conversionType, temperature){
+		var result;
+		switch(conversionType){
+			case "ctf":
+			result = (temperature * 9/5) + 32;
+			break;
+			case "ftc":
+			result = (temperature - 32) * 5/9;
+			break;
+			default: 
+			result = null;
+		}
+		return result;
+	}
+
+	function convertTemperatureByDropdown(){
+		var conversionType = document.getElementById('conversion-type').value;
+		var temperature = document.getElementById('temperature').value;
+		var result = output(conversionType, temperature);
+
+		if (conversionType == "ctf") {
+			document.getElementById('dropdown-result').innerHTML= temperature + "°C is " + result.toFixed(2) + "°F";
+		} else if (conversionType == "ftc") {
+			document.getElementById('dropdown-result').innerHTML = temperature + "°F is " + result.toFixed(2) + "°C";
+		}
+	} 
+
+	function celciusToFahrenheit(){
+		var temperature = document.getElementById('celcuis').value;
+		var result = parseFloat((temperature * 9/5)) + parseFloat(32);
+		document.getElementById('result').innerHTML=result.toFixed(2);
+	}
+	function fahrenheitToCelcius(){
+		var temperature = document.getElementById('fahrenheit').value;
+		var result = parseFloat((temperature -32)) * parseFloat(5/9);
+		document.getElementById('result').innerHTML=result.toFixed(2);
+	}
+</script>
+</html>

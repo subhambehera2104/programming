@@ -22,7 +22,6 @@ void frequencyNum(int num[], int n, int frequency[])
         }
     }
 }
-
 int main()
 {
     int num[] = {1, 4, 2, 0, 1, 4};

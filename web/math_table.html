@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math table</title>
+	<style>
+		#output{
+			color: #fff;
+			background-color: black;
+			width: 200px;
+			margin-top: 1%;
+			box-shadow: 8px 10px 20px black;
+			text-align: center;
+			font-size: 20px;
+		}
+		.container{
+			padding: 5px;
+			background-color: #f4511e;
+			height: 230px;
+			text-align: center;
+			color: #fff;
+		}
+		#mini{
+			font-size: 18px;
+			border: none;
+			border-radius: 5px;
+			height: 35px; 
+			width: 300px;
+		}
+		#maxi{
+			font-size: 18px;
+			border: none;
+			border-radius: 5px;
+			height: 35px; 
+			width: 300px;
+		}
+		button{
+			border: none;
+			background-color: rgb(46, 24, 106);
+			color: #fff;
+			font-size: 19px;
+			width: 200px;
+			margin-top: 5px;
+			height: 40px; 
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Search any tables</h1>
+		<input type="number" placeholder="Enter minimum number" id="mini"><br><br>
+		<input type="number" placeholder="Enter maximum number" id="maxi"><br>
+		<button onclick="mathTables()">Table</button>
+	</div>
+		<center><div id="output"></div></center>
+</body>
+<script>
+	function mathTables() {
+		let minimum = document.getElementById('mini').value;
+		let maximum = document.getElementById('maxi').value;
+		let res = " ";
+		if (!minimum || !maximum) {
+			alert("Sorry you should enter some number then search.");
+		}else{
+		   for(let i = minimum; i<maximum; i++){
+		  	for(let j = 1; j<=10; j++){
+		  		res+= i + " X " + j + " = " + i*j + "<br>";
+		  	}
+		  	res+= "<br>";
+		  }
+		}
+
+		document.getElementById('output').innerHTML = res;
+	};
+</script>
+</html>
