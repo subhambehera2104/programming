@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>Binary search</title>
+        <link rel="icon" type="image/png" href="https://files.oaiusercontent.com/file-OB9TUhogK3Jnw2OcHkXrtHPX?se=2024-10-09T17%3A30%3A11Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D3c356c2b-0019-4926-9134-d358ff466def.webp&sig=LUE9U6b%2Be3w1daqNOQafHcQk3UVBIeWAH331r0fp4tQ%3D">
+        <style>
+            body{
+                background-color: rgb(221, 244, 255);
+                padding: 1%;
+            }
+            .box-design{
+                height: 50px;
+                width: 50px;
+                background: linear-gradient(45deg, #ff6b6b, #f06595);
+                display: inline-block;
+                border-radius: 5px;
+                font-size: 40px;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                color: white;
+                gap: 20px;
+                padding: 1%;
+                margin-right: 1%;
+                margin-top: 5%;
+            }
+            #input{
+                width: 25%;
+                padding: 15px 30px;
+                font-size: 16px;
+                color: #007bff;
+                background-color: transparent;
+                border: 2px solid #007bff;
+                border-radius: 25px;
+                cursor: pointer;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .search-button {
+                padding: 15px 30px;
+                font-size: 16px;
+                color: #007bff;
+                background-color: transparent;
+                border: 2px solid #007bff;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .search-button:hover {
+                background-color: #007bff;
+                color: white;
+                transform: translateY(-3px);
+            }
+
+            .search-button:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>On this webpage, you can use binary search to find the following elements:</h1>
+            <b>
+            <div class="box-design">2</div>
+            <div class="box-design">4</div>
+            <div class="box-design">5</div>
+            <div class="box-design">7</div>
+            <div class="box-design">8</div>
+            <div class="box-design">10</div>
+            <div class="box-design">12</div>
+            <div class="box-design">15</div>
+            <div class="box-design">17</div>
+            </b>
+            <br><br><br>
+        <div>
+            <input placeholder="Enter your search element" id="input">
+            <button class="search-button" onclick="search()">
+                <span class="search-icon">🔍</span>Search
+            </button>
+        </div>
+        <h2 id="result" style="color: #fe5922;"></h2>
+        </center>
+    </body>
+    <script>
+        function search(){
+            let input = [2, 4, 5, 7, 8, 10, 12, 15, 17];
+            let s = parseInt(document.getElementById('input').value);
+            let n = input.length;
+            let mid = Math.floor(n / 2);
+            if(s >= input[mid]){
+                for(let i = mid; i<n; i++){
+                    if(input[i] == s){
+                        document.getElementById('result').innerHTML = "Your searched element is foundeed at index " + i;
+                        return;
+                    }
+                }
+            }
+            else if(s < input[mid]){
+                for(let i = mid; i >= 0; i--){
+                    if(input[i] == s){
+                        document.getElementById('result').innerHTML = "Your searched element is foundeed at index " + i;
+                        return;
+                    }
+                }
+            }
+            document.getElementById('result').innerHTML = "Your searched element is not found"
+        }
+    </script>
+</html>

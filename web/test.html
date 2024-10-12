@@ -3,164 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Train Game</title>
+    <title>Outline Button</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-
-        .game-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background-color: lightblue;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
 
-        #train {
-            position: absolute;
-            width: 100px;
-            height: 50px;
-            background-color: #ff0000;
-            border: 3px solid #000;
-            border-radius: 10px;
+        .outline-button {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: #007bff;
+            background-color: transparent;
+            border: 2px solid #007bff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .obstacle {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background-color: #333;
-            border-radius: 10px;
-            top: 50px;
-            left: 100vw;
-            animation: moveObstacle 4s linear infinite;
+        .outline-button:hover {
+            background-color: #007bff;
+            color: white;
+            transform: translateY(-3px);
         }
 
-        @keyframes moveObstacle {
-            from {
-                left: 100vw;
-            }
-            to {
-                left: -60px;
-            }
-        }
-
-        #score {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        #game-over {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 36px;
-            font-weight: bold;
-            color: red;
+        .outline-button:focus {
+            outline: none;
         }
     </style>
 </head>
 <body>
-
-<div class="game-container">
-    <div id="train"></div>
-    <div id="score">Score: 0</div>
-    <div id="game-over">Game Over</div>
-</div>
-
-<script>
-    const train = document.getElementById('train');
-    const scoreDisplay = document.getElementById('score');
-    const gameOverDisplay = document.getElementById('game-over');
-
-    let trainY = 50;
-    let score = 0;
-    let gameActive = true;
-
-    // Set the initial position of the train
-    train.style.top = `${trainY}px`;
-
-    // Move train up or down
-    document.addEventListener('keydown', function (e) {
-        if (!gameActive) return;
-        
-        if (e.key === 'ArrowUp' && trainY > 0) {
-            trainY -= 20;
-        } else if (e.key === 'ArrowDown' && trainY < window.innerHeight - 50) {
-            trainY += 20;
-        }
-        train.style.top = `${trainY}px`;
-    });
-
-    // Create obstacles
-    function createObstacle() {
-        if (!gameActive) return;
-
-        const obstacle = document.createElement('div');
-        obstacle.classList.add('obstacle');
-        obstacle.style.top = `${Math.random() * (window.innerHeight - 60)}px`;
-        document.body.appendChild(obstacle);
-
-        obstacle.addEventListener('animationend', () => {
-            document.body.removeChild(obstacle);
-            if (gameActive) {
-                score++;
-                scoreDisplay.textContent = `Score: ${score}`;
-            }
-        });
-
-        setTimeout(createObstacle, Math.random() * 2000 + 1000);
-    }
-
-    // Check for collisions
-    function checkCollision() {
-        if (!gameActive) return;
-
-        const obstacles = document.querySelectorAll('.obstacle');
-        obstacles.forEach(obstacle => {
-            const obstacleRect = obstacle.getBoundingClientRect();
-            const trainRect = train.getBoundingClientRect();
-
-            if (
-                trainRect.x < obstacleRect.x + obstacleRect.width &&
-                trainRect.x + trainRect.width > obstacleRect.x &&
-                trainRect.y < obstacleRect.y + obstacleRect.height &&
-                trainRect.y + trainRect.height > obstacleRect.y
-            ) {
-                gameOver();
-            }
-        });
-
-        if (gameActive) {
-            requestAnimationFrame(checkCollision);
-        }
-    }
-
-    // End the game
-    function gameOver() {
-        gameActive = false;
-        gameOverDisplay.style.display = 'block';
-        document.querySelectorAll('.obstacle').forEach(obstacle => {
-            obstacle.style.animationPlayState = 'paused';
-        });
-    }
-
-    // Start the game
-    createObstacle();
-    checkCollision();
-</script>
-
+    <button class="outline-button">Click Me</button>
 </body>
 </html>

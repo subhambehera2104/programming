@@ -15,5 +15,8 @@ void push(stack, int element){
     }
 }
 int main(){
-    
+ s1 = stack();
+ s1->push(3);
+ s1->push(2);
+ s1->push(3);   
 }

@@ -6,6 +6,7 @@ def isexp(expression):
         if char in "({[":
             stack.append(char)
         elif char in ")}]":
+            #if stack is empty
             if not stack:
                 return False
             
