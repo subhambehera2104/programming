@@ -3,18 +3,56 @@
 <head>
 	<title>Star patterns</title>
 	<style>
+		body{
+			padding: 1%;
+			background-color: #ffe2e2;
+		}
 		.container{
 			padding: 2%;
-			background-color: black;
+			background-color: rgb(255, 179, 179);
+			border-radius: 25px;
+			transition: all 0.3s ease;
+			box-shadow: 0px 8px 30px #888888;
 			width: 600px;
 			text-align: center;
+			border-radius: 10px;
+			margin-top: 10%;
+			height: 200px;
 
 		}
 		input{
 			padding: 8px;
 			margin: 10px 0;
-			font-size: 16px;
+			font-size: 18px;
 			width: 100%;
+			border-radius: 5px;
+			border: none;
+		}
+		#patterns-type{
+			background-color: #f99191;
+			border: none;
+			border-radius: 10px;
+			width: 30%;
+			height: 35px;
+			font-size: 19px;
+			color: white;
+			padding: 1%;
+			margin-left: 72%;
+		}
+		#print{
+			background-color: #f99191;
+			border: none;
+			border-radius: 10px;
+			height: 35px;
+			width: 30%;
+			font-size: 19px;
+			color: white;
+			padding: 1%;
+			margin-top: 1%;
+			margin-left: 72%;
+		}
+		#output{
+			text-align: left;
 		}
 	</style>
 </head>
@@ -26,15 +64,16 @@
 				<option value="square_in_star">Square in star</option>
 				<option value="triangle">Right triangle</option>
 				<option value="table_triangle">Table triangle</option>
-				<option value="dimon_triangle">Dimon triangle</option>
+				<option value="pascal_triangle">Pascal triangle</option>
 			</select>
-			<button onclick="printPattern()">Print</button>
+			<br>
+			<button onclick="printPattern()" id="print">Print</button>
+			<h2 id="output"></h2>
 		</div>
-		<div id="output"></div>
 	</center>	
 </body>
 <script>
-	function patternType(patternType, input) {
+	function patternType(patternType, input){
 		let result;
 		switch (patternType) {
 			case "square_in_star":
@@ -46,19 +85,10 @@
 			case "table_triangle":
 				result = tableTriangle(input);
 				break;
-			case "dimon_triangle":
-				result = dimonTriangle(input);
-				break;
+			case "pascal_triangle":
+				result = pascalTriangle(input);
 		}
 		return result;
-	}
-
-	function printPattern() {
-		let input = document.getElementById('input').value;
-		let patternTypeValue = document.getElementById('patterns-type').value;
-		let res = patternType(patternTypeValue, input);
-
-		document.getElementById('output').innerHTML = res;
 	}
 
 	function squareInStar(n) {
@@ -99,20 +129,27 @@
 		return res;
 	}
 
-	function dimonTriangle(n) {
-		let res = "";
-		for (let i = 1; i <= n; i++) {
-			for (let j = 0; j < i; j++) {
-				res += " * ";
+	function pascalTriangle(n){
+		let result = '';
+		for (let i = 0; i < n; i++) {
+			for(let j=0; j<n-1; j++){
+				let value = Math.pow(11, i);
+				result += value + "<br>";
+				console.log(result);
+				
 			}
-			for (let k = 0; k < i; k++) {
-				for (let l = 1; l <= n; l++) {
-					res += " * ";	
-			}
+			
+				
 		}
-		res += "<br>";
-		}
-		return res;
+		return result;
+	}
+
+	function printPattern() {
+		let input = document.getElementById('input').value;
+		let patternTypeValue = document.getElementById('patterns-type').value;
+		let res = patternType(patternTypeValue, input);
+
+		document.getElementById('output').innerHTML = res;
 	}
 </script>
 </html>

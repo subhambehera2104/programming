@@ -105,7 +105,6 @@
 	<div class="container">
 		 <input type="number" placeholder="Enter number" id="input"><br><br>
     	 <button onclick="factorial()" class="buttonstyle">Factorial</button><br><br>
-    	 <button onclick="fibonacci()" class="buttonstyle">Fibonacci</button><br><br>
     	 <h2 id="result"></h2>
     </div>
 </body>
@@ -118,20 +117,6 @@
 		  result=result*i;	
 		}
 		document.getElementById("result").innerHTML="factorial : "+result;
-	}
-	function fibonacci(){
-		var n = parseInt(document.getElementById("input").value); 	
-		var i = 1;
-		var j = 1;
-	   var sum = 0;
-       var result = "1,1,";	
-		while (i+sum<=n){
-			sum=i+j;
-			i=j;
-			j=sum;
-			result=result+sum+", ";
-		}
-		document.getElementById("result").innerHTML="fibonacci : "+result;
 	}
 </script>
 </html>

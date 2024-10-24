@@ -1,9 +1,46 @@
-<!-- Youtube clone -->
-<html>
-    <head>
-        <title>Youtube</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Photo with Camera</title>
+</head>
+<body>
+    <h1>Camera Capture Example</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <br>
+    <button id="captureButton">Take Photo</button>
+    <br><br>
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    <img id="photo" alt="Captured Photo" style="border:1px solid black;">
+    
+    <script>
+        const video = document.getElementById('video');
         
-    </body>
+        const canvas = document.getElementById('canvas');
+        const photo = document.getElementById('photo');
+        const captureButton = document.getElementById('captureButton');
+        const context = canvas.getContext('2d');
+
+        // Request access to the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                console.error("Error accessing the camera: ", err);
+            });
+
+        // Capture photo on button click
+        captureButton.addEventListener('click', () => {
+            // Draw the video frame on the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas image to a data URL and set it to the img element
+            const dataURL = canvas.toDataURL('image/png');
+            photo.src = dataURL;
+            photo.style.display = 'block';  // Show the captured photo
+        });
+    </script>
+</body>
 </html>
