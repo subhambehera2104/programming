@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bootstrap Animation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        h1, h3 {
+          background: linear-gradient(90deg, #7FE9DE, #FBC02D); /* Define your gradient colors */
+          background-clip: text;
+          color: transparent;   
+       }
+
+        .container h1 {
+            font-weight: 600;
+            font-size: 2.5rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .card-text {
+            color: #666;
+        }
+
+        .intro-section {
+            background-image: url('https://i.pinimg.com/originals/cf/94/7b/cf947b46283c10c47e3d5d945afb7053.gif');
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .intro-section h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .intro-section h3 {
+            font-weight: 400;
+        }
+
+        .scroll-down {
+            margin-top: 20px;
+            font-weight: 300;
+            background: linear-gradient(to left, #7FE9DE, #FBC02D);
+            border: none;
+            border-radius: 100px;
+            color: #0d6efd;
+        }
+        #scroll-text{
+          background: linear-gradient(to left, #ff6f6f 20%, #7dc9ff 80%);
+          background-clip: text;
+          color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro-section">
+        <h1>Welcome to the Modern Animation Tutorial</h1>
+        <h3>Scroll down to explore animations in Bootstrap</h3>
+        <a href="#scroll-animation"><button class="scroll-down fs-4">Scroll down 👇</button></a>
+    </div>
+    
+    <div class="container my-5" id="scroll-animation">
+        <h1 class="text-center mb-5" data-aos="fade-up"id="scroll-text">Scroll Animation Example</h1>
+
+        <div class="row">
+            <div class="col-md-4 mb-4" data-aos="fade-right">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 1</h5>
+                        <p class="card-text">This card will animate from the right when scrolled into view.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 2</h5>
+                        <p class="card-text">This card will fade up on scroll.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="fade-left">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 3</h5>
+                        <p class="card-text">This card will animate from the left.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="zoom-in">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 4</h5>
+                        <p class="card-text">This card will animate with a zoom-in effect.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="zoom-out">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 5</h5>
+                        <p class="card-text">This card will animate with a zoom-out effect.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 6</h5>
+                        <p class="card-text">This card will animate from the bottom (fade up).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="fade-down">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 7</h5>
+                        <p class="card-text">This card will animate from the top (fade down).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="flip-left">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 8</h5>
+                        <p class="card-text">This card will flip left on scroll.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4" data-aos="flip-right">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 9</h5>
+                        <p class="card-text">This card will flip right on scroll.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4" data-aos="fade-up-left">
+              <div class="card p-3">
+                  <div class="card-body">
+                      <h5 class="card-title">Card 10</h5>
+                      <p class="card-text">Glide into view from the left with a smooth fade-up effect</p>
+                  </div>
+              </div>
+           </div>
+           <div class="col-md-4 mb-4" data-aos="fade-up-right">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card 11</h5>
+                        <p class="card-text">Glide into view from the right with a smooth fade-up effect</p>
+                    </div>
+                </div>
+           </div>
+           <div class="col-md-4 mb-4" data-aos="flip-up">
+              <div class="card p-3">
+                  <div class="card-body">
+                      <h5 class="card-title" style="height: 47px;">Card 12</h5>
+                      <p class="card-text">This card will flip up on scroll</p>
+                  </div>
+              </div>
+            </div>
+       </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 2000, // Animation duration in milliseconds
+            offset: 30, // Offset from the top of the page when animation starts
+            easing: 'ease-in-out', // Easing function for smooth transition
+        });
+    </script>
+</body>
+</html>

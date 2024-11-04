@@ -3,44 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Take Photo with Camera</title>
+    <title>Animated Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease; /* Image transition */
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.1); /* Scale image on hover */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease;
+        }
+        .portfolio-item:hover .overlay {
+            opacity: 1; /* Show overlay on hover */
+        }
+        .content {
+            transition: transform 0.5s, opacity 0.5s; /* Transition for content */
+        }
+        .portfolio-item:hover .content {
+            transform: translateY(-10px); /* Move content up on hover */
+            opacity: 1; /* Ensure content is visible */
+        }
+    </style>
 </head>
 <body>
-    <h1>Camera Capture Example</h1>
-    <video id="video" width="640" height="480" autoplay></video>
-    <br>
-    <button id="captureButton">Take Photo</button>
-    <br><br>
-    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-    <img id="photo" alt="Captured Photo" style="border:1px solid black;">
-    
-    <script>
-        const video = document.getElementById('video');
-        
-        const canvas = document.getElementById('canvas');
-        const photo = document.getElementById('photo');
-        const captureButton = document.getElementById('captureButton');
-        const context = canvas.getContext('2d');
+    <div class="container mt-5">
+        <h2 class="text-center">Animated Portfolio</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400" alt="Project 1">
+                    <div class="overlay">
+                        <div class="content">
+                            <h4>Project 1</h4>
+                            <p>Description for project 1.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400" alt="Project 2">
+                    <div class="overlay">
+                        <div class="content">
+                            <h4>Project 2</h4>
+                            <p>Description for project 2.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400" alt="Project 3">
+                    <div class="overlay">
+                        <div class="content">
+                            <h4>Project 3</h4>
+                            <p>Description for project 3.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Request access to the camera
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then((stream) => {
-                video.srcObject = stream;
-            })
-            .catch((err) => {
-                console.error("Error accessing the camera: ", err);
-            });
-
-        // Capture photo on button click
-        captureButton.addEventListener('click', () => {
-            // Draw the video frame on the canvas
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-            // Convert the canvas image to a data URL and set it to the img element
-            const dataURL = canvas.toDataURL('image/png');
-            photo.src = dataURL;
-            photo.style.display = 'block';  // Show the captured photo
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

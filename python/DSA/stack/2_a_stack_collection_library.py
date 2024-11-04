@@ -1,7 +1,7 @@
 # Stack program using dequecollection library
 
 from collections import deque  #the collections is biggest library and deque is class of collectios library
-
+# deque full form is dubyended queue
 class Stack(): 
     def __init__(self):
         self.stack = deque() #This line code like self.stack = []
